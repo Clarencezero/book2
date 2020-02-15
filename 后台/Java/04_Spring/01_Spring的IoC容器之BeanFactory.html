@@ -1,0 +1,1550 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>01 Spring的IOC容器之BeanFactory · 0214</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="Clarencezero">
+        
+        
+    
+    <link rel="stylesheet" href="../../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-emphasize/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-prism/prism-okaidia.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-flexible-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-auto-scroll-table/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-lightbox/css/lightbox.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../../gitbook/gitbook-plugin-theme-fexa/fexa.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="02_IoC容器ApplicationContext.html" />
+    
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+	<div class="header-inner">
+		<!-- LOGO -->
+		<div class="logo"></div>
+		<span class="title"></span>
+
+		<!-- Search -->
+		
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+
+		<!-- Nav -->
+		<ul class="header-nav">
+			
+		</ul>
+	</div>
+
+	<div class="book-summary">
+		<div class="book-summary-title">文档目录</div>
+		
+		
+		<nav role="navigation">
+			
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../../">
+            
+                <a href="../../../">
+            
+                    
+                    README
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <span>
+            
+                    
+                    悟道
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" >
+            
+                <span>
+            
+                    
+                    书斋
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" >
+            
+                <span>
+            
+                    
+                    专业书籍
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.1" >
+            
+                <span>
+            
+                    
+                    深入理解Java虚拟机
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.1.1" >
+            
+                <span>
+            
+                    
+                    第二部分 走近Java
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.1.1.1" data-path="../../../书斋/专业书籍/01_深入理解Java虚拟机/02_Java内存区域与内存溢出异常.html">
+            
+                <a href="../../../书斋/专业书籍/01_深入理解Java虚拟机/02_Java内存区域与内存溢出异常.html">
+            
+                    
+                    02 Java 内存区域与内存溢出异常 
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.1.1.2" data-path="../../../书斋/专业书籍/01_深入理解Java虚拟机/03_垃圾收集器与内存分配策略.html">
+            
+                <a href="../../../书斋/专业书籍/01_深入理解Java虚拟机/03_垃圾收集器与内存分配策略.html">
+            
+                    
+                    03 垃圾收集器与内存分配策略
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.1.1.3" data-path="../../../书斋/专业书籍/01_深入理解Java虚拟机/04_虚拟机性能监控与故障处理工具.html">
+            
+                <a href="../../../书斋/专业书籍/01_深入理解Java虚拟机/04_虚拟机性能监控与故障处理工具.html">
+            
+                    
+                    04 虚拟机性能监控与故障处理工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.1.1.4" data-path="../../../书斋/专业书籍/01_深入理解Java虚拟机/05_调优案例分析与实战.html">
+            
+                <a href="../../../书斋/专业书籍/01_深入理解Java虚拟机/05_调优案例分析与实战.html">
+            
+                    
+                    05 调优案例分析与实战
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.1.2" >
+            
+                <span>
+            
+                    
+                    第三部分 虚拟机执行子系统
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1.1.2.1" data-path="../../../书斋/专业书籍/01_深入理解Java虚拟机/06_类文件结构.html">
+            
+                <a href="../../../书斋/专业书籍/01_深入理解Java虚拟机/06_类文件结构.html">
+            
+                    
+                    06 类文件结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.1.2.2" data-path="../../../书斋/专业书籍/01_深入理解Java虚拟机/07_虚拟机类加载机制.html">
+            
+                <a href="../../../书斋/专业书籍/01_深入理解Java虚拟机/07_虚拟机类加载机制.html">
+            
+                    
+                    07 虚拟机类加载机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.1.1.2.3" data-path="../../../书斋/专业书籍/01_深入理解Java虚拟机/08_虚拟机字节码执行引擎.html">
+            
+                <a href="../../../书斋/专业书籍/01_深入理解Java虚拟机/08_虚拟机字节码执行引擎.html">
+            
+                    
+                    08 虚拟机字节码执行引擎
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    前端
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    后台
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" >
+            
+                <span>
+            
+                    
+                    Java
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1.1" >
+            
+                <span>
+            
+                    
+                    并发编程
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.2" >
+            
+                <span>
+            
+                    
+                    Spring
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.5.1.2.1" data-path="01_Spring的IoC容器之BeanFactory.html">
+            
+                <a href="01_Spring的IoC容器之BeanFactory.html">
+            
+                    
+                    01 Spring的IOC容器之BeanFactory
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.2.2" data-path="02_IoC容器ApplicationContext.html">
+            
+                <a href="02_IoC容器ApplicationContext.html">
+            
+                    
+                    02 IoC陪我看看ApplicationContext
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.3" >
+            
+                <span>
+            
+                    
+                    SpringBoot
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1.3.1" data-path="../05_SpringCloud/01_SpringCloud实战项目一.html">
+            
+                <a href="../05_SpringCloud/01_SpringCloud实战项目一.html">
+            
+                    
+                    01 SpringBoot实战项目一
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.1.4" >
+            
+                <span>
+            
+                    
+                    网络
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1.4.1" data-path="../06_网络/01_当你输入一个URL之后会发生什么.html">
+            
+                <a href="../06_网络/01_当你输入一个URL之后会发生什么.html">
+            
+                    
+                    01 当你输入一个URL会发生什么
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" >
+            
+                <span>
+            
+                    
+                    网络编程
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.2.1" >
+            
+                <span>
+            
+                    
+                    网络原理
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.2" >
+            
+                <span>
+            
+                    
+                    netty
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" >
+            
+                <span>
+            
+                    
+                    大数据
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.3.1" >
+            
+                <span>
+            
+                    
+                    Hadoop生态
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.3.1.1" >
+            
+                <span>
+            
+                    
+                    Hadoop
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3.1.2" >
+            
+                <span>
+            
+                    
+                    Hive
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3.1.3" >
+            
+                <span>
+            
+                    
+                    HDFS
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3.1.4" >
+            
+                <span>
+            
+                    
+                    HBase
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3.2" >
+            
+                <span>
+            
+                    
+                    Flink
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" >
+            
+                <span>
+            
+                    
+                    中间件
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.4.1" >
+            
+                <span>
+            
+                    
+                    RabbitMQ
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4.2" >
+            
+                <span>
+            
+                    
+                    Kafka
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" >
+            
+                <span>
+            
+                    
+                    采集
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" >
+            
+                <span>
+            
+                    
+                    论坛
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1.1" >
+            
+                <a target="_blank" href="https://www.v2ex.com/">
+            
+                    
+                    V2EX
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.1.2" >
+            
+                <a target="_blank" href="https://www.tech.meituan.com">
+            
+                    
+                    美团技术团队
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.1.3" >
+            
+                <a target="_blank" href="https://www.v2ex.com/">
+            
+                    
+                    阮一峰·周刊
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.1.4" data-path="../../../采集/论坛/论坛.html">
+            
+                <a href="../../../采集/论坛/论坛.html">
+            
+                    
+                    简洁开源论坛收集 
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" >
+            
+                <span>
+            
+                    
+                    Markdown
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.2.1" >
+            
+                <a target="_blank" href="https://cyc2018.github.io/Text-Typesetting/">
+            
+                    
+                    Markdown排版工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2.2" >
+            
+                <a target="_blank" href="http://www.tablesgenerator.com/markdown_tables">
+            
+                    
+                    Markdown Table生成器
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" >
+            
+                <a target="_blank" href="https://magi.com">
+            
+                    
+                    Magi
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" >
+            
+                <span>
+            
+                    
+                    错误排查步骤
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.4.1" data-path="../../../采集/错误排查步骤/Windows.html">
+            
+                <a href="../../../采集/错误排查步骤/Windows.html">
+            
+                    
+                    windows
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4.2" data-path="../../../采集/错误排查步骤/Linux.html">
+            
+                <a href="../../../采集/错误排查步骤/Linux.html">
+            
+                    
+                    Linux
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+		</nav>
+		
+		
+	</div>
+
+	<!-- Content nav -->
+	<div class="book-anchor">
+		<div class="book-anchor-title">在这篇文章中:</div>
+		<div class="book-anchor-body">
+
+		</div>
+	</div>
+
+	<div class="book-body">
+		
+		<div class="body-inner">
+			
+			
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../../.." >01 Spring的IOC容器之BeanFactory</a>
+    </h1>
+</div>
+
+
+
+
+			<div class="page-wrapper" tabindex="-1" role="main">
+				<div class="page-inner">
+					
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+					<section class="normal markdown-section">
+						
+						<h1 id="spring&#x7684;ioc&#x5BB9;&#x5668;&#x4E4B;beanfactory">Spring&#x7684;IoC&#x5BB9;&#x5668;&#x4E4B;BeanFactory</h1>
+<p>Spring&#x63D0;&#x4F9B; &#x4E86;&#x4E24;&#x79CD;&#x5BB9;&#x5668;&#x7C7B;&#x578B;&#xFF1A;BeanFactory&#x548C;ApplicationContext&#x3002;</p>
+<ul>
+<li>BeanFactory&#x3002;&#x57FA;&#x7840;&#x7C7B;&#x578B;IoC&#x5BB9;&#x5668;&#xFF0C;&#x63D0;&#x4F9B;&#x5B8C;&#x6574;&#x7684;IoC&#x670D;&#x52A1;&#x652F;&#x6301;&#x3002;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x7279;&#x6B8A;&#x6307;&#x5B9A;&#xFF0C;&#x9ED8;&#x8BA4;&#x91C7;&#x7528;&#x5EF6; &#x8FDF;&#x521D;&#x59CB;&#x5316;&#x7B56;&#x7565;dazy-load&#xFF09;&#x3002;&#x53EA;&#x6709;&#x5F53;&#x5BA2;&#x6237;&#x7AEF;&#x5BF9;&#x8C61;&#x9700;&#x8981;&#x8BBF;&#x95EE;&#x5BB9;&#x5668;&#x4E2D;&#x7684;&#x67D0;&#x4E2A;&#x53D7;&#x7BA1;&#x5BF9;&#x8C61;&#x7684;&#x540B;&#x5019;&#xFF0C;&#x624D;&#x5BF9; &#x8BE5;&#x53D7;&#x7BA1;&#x5BF9;&#x8C61;&#x8FDB;&#x884C;&#x521D;&#x59CB;&#x5316;&#x4EE5;&#x53CA;&#x4F9D;&#x8D56;&#x6CE8;&#x5165;&#x64CD;&#x4F5C;&#x3002;&#x6240;&#x4EE5;&#xFF0C;&#x76F8;&#x5BF9;&#x6765;&#x8BF4;&#xFF0C;&#x5BB9;&#x5668;&#x542F;&#x52A8;&#x521D;&#x671F;&#x901F;&#x5EA6;&#x8F83;&#x5FEB;&#xFF0C;&#x6240;&#x9700; &#x8981;&#x7684;&#x8D44;&#x6E90;&#x6709;&#x9650;&#x3002;&#x5BF9;&#x4E8E;&#x8D44;&#x6E90;&#x6709;&#x9650;&#xFF0C;&#x5E76;&#x4E14;&#x529F;&#x80FD;&#x8981;&#x6C42;&#x4E0D;&#x662F;&#x5F88;&#x4E25;&#x683C;&#x7684;&#x573A;&#x666F;&#xFF0C;BeanFactory&#x662F;&#x6BD4;&#x8F83;&#x5408;&#x9002;&#x7684; IoC&#x5BB9;&#x5668;&#x9009;&#x62E9;&#x3002;</li>
+<li>ApplicationContext&#x3002;Applicationcontext&#x5728;BeanFactory&#x7684;&#x57FA;&#x7840;&#x4E0A;&#x6784;&#x5EFA;&#xFF0C;&#x662F;&#x76F8;&#x5BF9;&#x6BD4;&#x8F83;&#x9AD8; &#x7EA7;&#x7684;&#x5BB9;&#x5668;&#x5B9E;&#x73B0;&#xFF0C;&#x9664;&#x4E86;&#x62E5;&#x6709;BeanFactory&#x7684;&#x6240;&#x6709;&#x652F;&#x6301;&#xFF0C;ApplicationContext&#x8FD8;&#x63D0;&#x4F9B;&#x4E86;&#x5176;&#x4ED6;&#x9AD8;&#x7EA7;&#x7279;&#x6027;&#xFF0C;&#x6BD4;&#x5982;&#x4E8B;&#x4EF6;&#x53D1;&#x5E03;&#x3001;&#x56FD;&#x9645;&#x5316;&#x4FE1;&#x606F;&#x652F;&#x6301;&#x7B49;&#xFF0C;&#x8FD9;&#x4E9B;&#x4F1A;&#x5728;&#x540E;&#x9762;&#x8BE6;&#x8FF0;&#x3002;Applicationcontext&#x6240;&#x7BA1;&#x7406; &#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x5728;&#x8BE5;&#x7C7B;&#x578B;&#x5BB9;&#x5668;&#x542F;&#x52A8;&#x4E4B;&#x540E;&#xFF0C;&#x9ED8;&#x8BA4;&#x5168;&#x90E8;&#x521D;&#x59CB;&#x5316;&#x5E76;&#x7ED1;&#x5B9A;&#x5B8C;&#x6210;&#x3002;&#x6240;&#x4EE5;&#xFF0C;&#x76F8;&#x5BF9;&#x4E8E;BeanFactory&#x6765; &#x8BF4;&#xFF0C;Applicationcontext&#x8981;&#x6C42;&#x66F4;&#x591A;&#x7684;&#x7CFB;&#x7EDF;&#x8D44;&#x6E90;&#xFF0C;&#x540C;&#x65F6;&#xFF0C;&#x56E0;&#x4E3A;&#x5728;&#x542F;&#x52A8;&#x65F6;&#x5C31;&#x5B8C;&#x6210;&#x6240;&#x6709;&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x5BB9;&#x5668;&#x542F;&#x52A8;&#x65F6;&#x95F4;&#x8F83;&#x4E4B;BeanFactory&#x4E5F;&#x4F1A;&#x957F;&#x4E00;&#x4E9B;&#x3002;&#x5728;&#x90A3;&#x4E9B;&#x7CFB;&#x7EDF;&#x8D44;&#x6E90;&#x5145;&#x8DB3;&#xFF0C;&#x5E76;&#x4E14;&#x8981;&#x6C42;&#x66F4;&#x591A;&#x529F;&#x80FD;&#x7684;&#x573A;&#x666F;&#x4E2D;&#xFF0C; Applicationcontext&#x7C7B;&#x578B;&#x7684;&#x5BB9;&#x5668;&#x662F;&#x6BD4;&#x8F83;&#x5408;&#x9002;&#x7684;&#x9009;&#x62E9;&#x3002;</li>
+</ul>
+<p><a href="https://cdn.jsdelivr.net/gh/Clarencezero/poi/1551927332393.png" data-lightbox="f869bea2-0caa-40d8-bf6e-a6d5c96257d5" data-title="1551927332393" target="_blank"><img src="https://cdn.jsdelivr.net/gh/Clarencezero/poi/1551927332393.png" alt="1551927332393"></a></p>
+<p>&#x4F5C;&#x4E3A;Spring&#x63D0;&#x4F9B;&#x7684;&#x57FA;&#x672C;&#x7684;IoC&#x5BB9;&#x5668;,beanFactory&#x53EF;&#x4EE5;&#x5B8C;&#x6210;&#x4F5C;&#x4E3A;IoC Service Provider&#x7684;&#x6240;&#x6709;&#x804C;&#x8D23;, &#x5305;&#x62EC;&#x4E1A;&#x52A1;&#x5BF9;&#x8C61;&#x7684;&#x6CE8;&#x518C;&#x548C;&#x5BF9;&#x8C61;&#x95F4;&#x4F9D;&#x8D56;&#x5173;&#x7CFB;&#x7684;&#x7ED1;&#x5B9A;&#x3002;</p>
+<p>BeanFactory&#x53EA;&#x662F;&#x4E00;&#x4E2A;&#x63A5;&#x53E3;, DefaultListableBeanFactory&#x5C31;&#x662F;&#x8FD9;&#x4E48;&#x4E00;&#x4E2A;&#x6BD4;&#x8F83;&#x901A;&#x7528;&#x7684;BeanFactory&#x5B9E;&#x73B0;&#x7C7B;&#x3002;&#x5B83;&#x8FD8;&#x5B9E;&#x73B0;&#x4E86;BeanDefinitionRegistry&#x63A5;&#x53E3;,&#x8BE5;&#x63A5;&#x53E3;&#x624D;&#x662F;&#x5728;BeanFactory&#x7684;&#x5B9E;&#x73B0;&#x4E2D;&#x62C5;&#x5F53;Bean&#x6CE8;&#x518C;&#x7BA1;&#x7406;&#x7684;&#x89D2;&#x8272;&#x3002;BeanDefinitionRegistry &#x63A5;&#x53E3;&#x5B9A;&#x4E49;&#x62BD;&#x8C61;&#x4E86;Bean&#x7684;&#x6CE8;&#x518C;&#x903B;&#x8F91;&#x3002;</p>
+<p><a href="https://cdn.jsdelivr.net/gh/Clarencezero/poi/1551929173331.png" data-lightbox="1b2dddfa-49a7-42bb-b21e-18cd4dc3220f" data-title="1551929173331" target="_blank"><img src="https://cdn.jsdelivr.net/gh/Clarencezero/poi/1551929173331.png" alt="1551929173331"></a></p>
+<p>&#x6253;&#x4E2A;&#x6BD4;&#x65B9;&#x8BF4;&#xFF0C;BeanDefin&#x8BA9;ionRegistry&#x5C31;&#x50CF;&#x56FE;&#x4E66;&#x9986;&#x7684;&#x4E66;&#x67B6;&#xFF0C;&#x6240;&#x6709;&#x7684;&#x4E66;&#x662F;&#x653E;&#x5728;&#x4E66;&#x67B6;&#x4E0A;&#x7684;&#x3002;&#x867D;&#x7136;&#x4F60; &#x8FD8;&#x4E66;&#x6216;&#x8005;&#x501F;&#x4E66;&#x90FD;&#x662F;&#x8DDF;&#x56FE;&#x4E66;&#x9986;&#xFF08;&#x4E5F;&#x5C31;&#x662F;BeanFactory,&#x6216;&#x8BB8;BookFactory&#x53EF;&#x80FD;&#x66F4;&#x597D;&#x4E9B;&#xFF09;&#x6253;&#x4EA4;&#x9053;&#xFF0C;&#x4F46;&#x4E66;&#x67B6;&#x624D;&#x662F;&#x56FE;&#x4E66;&#x9986;&#x5B58;&#x653E;&#x5404;&#x7C7B;&#x56FE;&#x4E66;&#x7684;&#x5730;&#x65B9;&#x3002;&#x6240;&#x4EE5;&#xFF0C;&#x4E66;&#x67B6;&#x76F8;&#x5BF9;&#x4E8E;&#x56FE;&#x4E66;&#x9986;&#x6765;&#x8BF4;&#xFF0C;&#x5C31;&#x662F;&#x5B83;&#x7684;&#x201C;BookDefinitionRegistry&#x201D;&#x3002;</p>
+<p>&#x7B2C;&#x4E00;&#x4E2A;&#x53D7;&#x7BA1;&#x7684;&#x5BF9;&#x8C61;,&#x5728;&#x5BB9;&#x5668;&#x4E2D;&#x90FD;&#x4F1A;&#x6709;&#x4E00;&#x4E2A;BeanDefinition&#x7684;&#x5B9E;&#x4F8B;(instance)&#x4E0E;&#x4E4B;&#x5BF9;&#x5E94;,&#x8BE5;BeanDefinition&#x7684;&#x5B9E;&#x4F8B;&#x8D1F;&#x8D23;&#x4FDD;&#x5B58;&#x5BF9;&#x8C61;&#x7684;&#x6240;&#x6709;&#x5FC5;&#x8981;&#x4FE1;&#x606F;,&#x5305;&#x62EC;&#x5176;&#x5BF9;&#x5E94;&#x7684;&#x5BF9;&#x8C61;&#x7684;class&#x7C7B;&#x578B;&#x3001;&#x662F;&#x5426;&#x662F;&#x62BD;&#x8C61;&#x7C7B;&#x3001;&#x6784;&#x9020;&#x65B9;&#x6CD5;&#x53C2;&#x6570;&#x5FC3;&#x810F;&#x5176;&#x4ED6;&#x5C5E;&#x6027;&#x7B49;&#x3002;&#x5F53;&#x5BA2;&#x6237;&#x7AEF;&#x5411;BeanFactory&#x8BF7;&#x6C42;&#x76F8;&#x5E94;&#x5BF9;&#x8C61;&#x7684;&#x65F6;&#x5019;, BeanFactory&#x4F1A;&#x901A;&#x8FC7;&#x8FD9;&#x4E9B;&#x4FE1;&#x606F;&#x4E3A;&#x5BA2;&#x6237;&#x7AEF;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x5B8C;&#x5907;&#x53EF;&#x7528;&#x7684;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;&#x3002;RootBeanDefinition&#x548C;ChildBeanDefinition&#x662F;BeanDefinition&#x7684;&#x4E24;&#x4E2A;&#x4E3B;&#x8981;&#x7684;&#x5B9E;&#x73B0;&#x7C7B;&#x3002;</p>
+<p><a href="https://cdn.jsdelivr.net/gh/Clarencezero/poi/1551929874194.png" data-lightbox="a695771c-79d3-4947-a542-d379a1ea532c" data-title="1551929874194" target="_blank"><img src="https://cdn.jsdelivr.net/gh/Clarencezero/poi/1551929874194.png" alt="1551929874194"></a></p>
+<h3 id="422-&#x5916;&#x90E8;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x65B9;&#x5F0F;">4.2.2 &#x5916;&#x90E8;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x65B9;&#x5F0F;</h3>
+<p>SPring&#x7684;IoC&#x5BB9;&#x5668;&#x652F;&#x6301;&#x4E24;&#x79CD;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x683C;&#x5F0F;: Properties&#x6587;&#x4EF6;&#x683C;&#x5F0F;&#x548C;XML&#x6587;&#x4EF6;&#x683C;&#x5F0F;&#x3002;</p>
+<p>&#x901A;&#x5E38;&#x60C5;&#x51B5;&#x4E0B;,&#x9700;&#x8981;&#x6839;&#x636E;&#x4E0D;&#x540C;&#x7684;&#x5916;&#x90E8;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x683C;&#x5F0F;,&#x7ED9;&#x51FA;&#x76F8;&#x5E94;&#x7684;BeanDefinitionReader&#x5B9E;&#x73B0;&#x7C7B;, &#x7531;BeanDefinitionReader&#x7684;&#x76F8;&#x5E94;&#x5B9E;&#x73B0;&#x7C7B;&#x8D1F;&#x8D23;&#x5C06;&#x76F8;&#x5E94;&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x5185;&#x5BB9;&#x8BFB;&#x53D6;&#x5E76;&#x6620;&#x5C04;&#x5230;BeanDefinition,&#x7136;&#x540E;&#x5C06;&#x6620;&#x5C04;&#x540E;&#x7684;BeanDefinition&#x6CE8;&#x518C;&#x5230;&#x4E00;&#x4E2A;BeanDefinitionRegistry,&#x4E4B;&#x540E;,BeanDefinitionRegistry&#x5373;&#x5B8C;&#x6210;Bean&#x7684;&#x6CE8;&#x518C;&#x548C;&#x52A0;&#x8F7D;&#x3002;&#x5F53;&#x7136;, &#x5927;&#x90E8;&#x5206;&#x5DE5;&#x4F5C;,&#x5305;&#x62EC;&#x89E3;&#x6790;&#x6587;&#x4EF6;&#x683C;&#x5F0F;&#x3001;&#x88C5;&#x914D;BeanDefinition&#x4E4B;&#x7C7B;&#x7684;&#x5DE5;&#x4F5C;,&#x90FD;&#x662F;&#x7531;BeanDefinitionReader&#x7684;&#x76F8;&#x5E94;&#x5B9E;&#x73B0;&#x7C7B;&#x6765;&#x505A;&#x7684;,BeanDefinitionRegistry&#x53EA;&#x4E0D;&#x8FC7;&#x8D1F;&#x8D23;&#x4FDD;&#x7BA1;&#x800C;&#x5DF2;&#x3002;</p>
+<h4 id="4221-xml&#x914D;&#x7F6E;&#x683C;&#x5F0F;&#x7684;&#x52A0;&#x8F7D;">4.2.2.1 XML&#x914D;&#x7F6E;&#x683C;&#x5F0F;&#x7684;&#x52A0;&#x8F7D;</h4>
+<pre class="language-"><code class="lang-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">LoadingXmlTest</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">DefaultListableBeanFactory</span> beanRegistry <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DefaultListableBeanFactory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">BeanFactory</span> container <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">BeanFactory</span><span class="token punctuation">)</span><span class="token function">bindViaXMLFile</span><span class="token punctuation">(</span>beanRegistry<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">Sunday</span> sunday <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">Sunday</span><span class="token punctuation">)</span> container<span class="token punctuation">.</span><span class="token function">getBean</span><span class="token punctuation">(</span><span class="token string">&quot;sunday&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>sunday<span class="token punctuation">.</span><span class="token function">getAge</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>sunday<span class="token punctuation">.</span><span class="token function">getUserName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token class-name">BeanFactory</span> <span class="token function">bindViaXMLFile</span><span class="token punctuation">(</span><span class="token class-name">DefaultListableBeanFactory</span> beanRegistry<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">XmlBeanDefinitionReader</span> reader <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">XmlBeanDefinitionReader</span><span class="token punctuation">(</span>beanRegistry<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        reader<span class="token punctuation">.</span><span class="token function">loadBeanDefinitions</span><span class="token punctuation">(</span><span class="token string">&quot;spring.xml&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token class-name">BeanFactory</span><span class="token punctuation">)</span>beanRegistry<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="43-beanfactory&#x7684;xml&#x4E4B;&#x65C5;">4.3 BeanFactory&#x7684;XML&#x4E4B;&#x65C5;</h3>
+<h4 id="431-&#x548C;">4.3.1 <beans>&#x548C;<bean></bean></beans></h4>
+<p>&#x6240;&#x6709;&#x6CE8;&#x518C;&#x5230;&#x5BB9;&#x5668;&#x7684;&#x4E1A;&#x52A1;&#x5BF9;&#x8C61;,&#x5728;Spring&#x4E2D;&#x79F0;&#x4E4B;&#x4E3A;Bean&#x3002;&#x6240;&#x4EE5;, &#x7B2C;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x5728;XML&#x4E2D;&#x7684;&#x6620;&#x5C04;&#x4E5F;&#x81EA;&#x7136;&#x800C;&#x7136;&#x5730;&#x5BF9;&#x5E94;&#x4E00;&#x4E2A;&#x53EB;&#x505A;<bean>&#x7684;&#x5143;&#x7D20;&#x3002;&#x628A;&#x8FD9;&#x4E9B;<bean>&#x7684;&#x5143;&#x7D20;&#x7EC4;&#x7EC7;&#x8D77;&#x6765;&#x7684;, &#x5C31;&#x53EB;&#x505A;<beans>&#x3002;</beans></bean></bean></p>
+<p>&#xFF1C;beans&#xFF1E;&#x4F5C;&#x4E3A;&#x6240;&#x6709;&#xFF1C;bean&#xFF1E;&#x7684;&quot;&#x7EDF;&#x5E05;&quot;&#xFF0C;&#x5B83;&#x62E5;&#x6709;&#x76F8;&#x5E94;&#x7684;&#x5C5E;&#x6027;(attribute)&#x5BF9;&#x6240;&#x8F96;&#x7684;&#xFF1C;bean&#xFF1E;&#x8FDB;&#x884C;&#x7EDF;&#x4E00; &#x7684;&#x9ED8;&#x8BA4;&#x884C;&#x4E3A;&#x8BBE;&#x7F6E;&#xFF0C;&#x5305;&#x62EC;&#x5982;&#x4E0B;&#x51E0;&#x4E2A;&#x3002;</p>
+<ul>
+<li>default-lazy-init&#x3002;&#x5176;&#x503C;&#x53EF;&#x4EE5;&#x6307;&#x5B9A;&#x4E3A;true&#x6216;&#x8005;false,&#x9ED8;&#x8BA4;&#x503C;&#x4E3A;false&#x3002;&#x7528;&#x6765;&#x6807;&#x5FD7;&#x662F;&#x5426;&#x5BF9;&#x6240;&#x6709;&#x7684;&#xFF1C;bean&#xFF1E;&#x8FDB;&#x884C;&#x5EF6;&#x8FDF;&#x521D;&#x59CB;&#x5316;&#x3002;</li>
+<li>default-autowire&#x3002;&#x53EF;&#x4EE5;&#x53D6;&#x503C;&#x4E3A;no&#x3001;byName&#x3001; byType&#x3001; constructor&#x4EE5;&#x53CA;autodetect&#x3002;&#x9ED8; &#x8BA4;&#x503C;&#x4E3A;no, &#x5982;&#x679C;&#x4F7F;&#x7528;&#x81EA;&#x52A8;&#x7ED1;&#x5B9A;&#x7684;&#x8BDD;&#xFF0C;&#x7528;&#x6765;&#x6807;&#x5FD7;&#x5168;&#x4F53;bean&#x4F7F;&#x7528;&#x54EA;&#x4E00;&#x79CD;&#x9ED8;&#x8BA4;&#x7ED1;&#x5B9A;&#x65B9;&#x5F0F;&#x3002;</li>
+<li>default-dependency-check&#x3002;&#x53EF;&#x4EE5;&#x53D6;&#x503C; none&#x3001;objects&#x3001;simple &#x4EE5;&#x53CA; all,&#x9ED8;&#x8BA4;&#x503C;&#x4E3A; none, &#x5373;&#x4E0D;&#x505A;&#x4F9D;&#x8D56;&#x68C0;&#x67E5;&#x3002;</li>
+<li>default-init-method&#x3002;&#x5982;&#x679C;&#x6240;&#x7BA1;&#x8F96;&#x7684;&#xFF1C;bean&#xFF1E;&#x6309;&#x7167;&#x67D0;&#x79CD;&#x89C4;&#x5219;&#xFF0C;&#x90FD;&#x6709;&#x540C;&#x6837;&#x540D;&#x79F0;&#x7684;&#x521D;&#x59CB;&#x5316;&#x65B9;&#x6CD5;&#x7684;&#x8BDD;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x8FD9;&#x91CC;&#x7EDF;&#x4E00;&#x6307;&#x5B9A;&#x8FD9;&#x4E2A;&#x521D;&#x59CB;&#x5316;&#x65B9;&#x6CD5;&#x540D;&#xFF0C;&#x800C;&#x4E0D;&#x7528;&#x5728;&#x6BCF;&#x4E00;&#x4E2A;&#xFF1C;bean&#xFF1E;&#x4E0A;&#x90FD;&#x91CD;&#x590D;&#x5355;&#x72EC;&#x6307;&#x5B9A;&#x3002;</li>
+<li>default-destroy-method&#x3002;&#x4E0E;default-init-method&#x76F8;&#x5BF9;&#x5E94;&#xFF0C;&#x5982;&#x679C;&#x6240;&#x7BA1;&#x8F96;&#x7684;bean&#x6709;&#x6309;&#x7167;&#x67D0;&#x79CD;&#x89C4;&#x5219;&#x4F7F;&#x7528;&#x4E86;&#x76F8;&#x540C;&#x540D;&#x79F0;&#x7684;&#x5BF9;&#x8C61;&#x9500;&#x6BC1;&#x65B9;&#x6CD5;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#x7EDF;&#x4E00;&#x6307;&#x5B9A;&#x3002;</li>
+<li><import> &#x53EF;&#x4EE5;&#x6839;&#x636E;&#x6A21;&#x5757;&#x529F;&#x80FD;&#x6216;&#x8005;&#x5C42;&#x6B21;&#x5173;&#x7CFB;,&#x5C06;&#x914D;&#x7F6E;&#x4FE1;&#x606F;&#x5206;&#x95E8;&#x522B;&#x7C7B;&#x5730;&#x653E;&#x5230;&#x591A;&#x4E2A;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E2D;&#x3002;&#x8FD9;&#x4E2A;&#x529F;&#x80FD;&#x4EF7;&#x503C;&#x4E0D;&#x5927;, &#x56E0;&#x4E3A;&#x5BB9;&#x5668;&#x53EF;&#x4EE5;&#x540C;&#x65F6;&#x52A0;&#x8F7D;&#x591A;&#x4E2A;&#x914D;&#x7F6E;,&#x6CA1;&#x6709;&#x5FC5;&#x8981;&#x975E;&#x901A;&#x8FC7;&#x4E00;&#x4E2A;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x6765;&#x52A0;&#x8F7D;&#x6240;&#x6709;&#x914D;&#x7F6E;&#x3002;</import></li>
+</ul>
+<h5 id="4331-&#x6784;&#x9020;&#x65B9;&#x6CD5;&#x6CE8;&#x5165;&#x7684;xml&#x4E4B;&#x9053;">4.3.3.1 &#x6784;&#x9020;&#x65B9;&#x6CD5;&#x6CE8;&#x5165;&#x7684;XML&#x4E4B;&#x9053;</h5>
+<pre class="language-"><code class="lang-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>bean</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>test<span class="token punctuation">&quot;</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>com.test.Test<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>constructor-arg</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ref</span> <span class="token attr-name">bean</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>newBean<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>constructor-arg</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>bean</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token comment">&lt;!-- &#x4E5F;&#x53EF;&#x4EE5;&#x8868;&#x793A;&#x6210;&#x8FD9;&#x4E2A;&#x6837;&#x5B50;--&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>constructor-arg</span> <span class="token attr-name">ref</span> <span class="token attr-name">bean</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>newBean<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/&gt;</span></span>
+</code></pre>
+<p>&#x56E0;&#x4E3A;&#x67D0;&#x4E9B;&#x539F;&#x56E0;, &#x65E0;&#x6CD5;&#x660E;&#x786E;&#x914D;&#x7F6E;&#x9879;&#x4E0E;&#x5BF9;&#x8C61;&#x7684;&#x6784;&#x9020;&#x65B9;&#x6CD5;&#x53C2;&#x6570;&#x5217;&#x8868;&#x7684;&#x4E00;&#x4E00;&#x5BF9;&#x5E94;&#x5173;&#x7CFB;, &#x5C31;&#x9700;&#x8981;&#x8BF7;<constructor-arg>&#x7684;type&#x6216;&#x8005;index&#x5C5E;&#x6027;&#x3002;</constructor-arg></p>
+<pre class="language-"><code class="lang-java"><span class="token keyword">public</span> <span class="token class-name">Mock</span><span class="token punctuation">(</span><span class="token class-name">String</span> str<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token keyword">public</span> <span class="token class-name">Mock</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token keyword">int</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+</code></pre>
+<pre class="language-"><code class="lang-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>bean</span> <span class="token attr-name">id</span> <span class="token attr-value"><span class="token punctuation">=</span> <span class="token punctuation">&quot;</span>mock<span class="token punctuation">&quot;</span></span> <span class="token attr-name">class</span> <span class="token attr-value"><span class="token punctuation">=</span> <span class="token punctuation">&quot;</span>com.mock<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>constructor-arg</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>int<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">&gt;</span></span>123<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>constructor-arg</span><span class="token punctuation">&gt;</span></span>        
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>bean</span><span class="token punctuation">&gt;</span></span>
+
+// &#x4E5F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; index=&quot;0&quot;&#x7684;&#x65B9;&#x5F0F;&#x3002;&#x6807;&#x4ECE;0&#x5F00;&#x59CB;
+</code></pre>
+<h5 id="4332-setter&#x65B9;&#x6CD5;&#x6CE8;&#x5165;&#x7684;xml&#x4E4B;&#x9053;">4.3.3.2 Setter&#x65B9;&#x6CD5;&#x6CE8;&#x5165;&#x7684;XML&#x4E4B;&#x9053;</h5>
+<property name="hello" class="">
+
+<p>&#x6CE8;: <constructor-arg> &#x548C; <property>&#x53EF;&#x4EE5;&#x5171;&#x5B58;&#x3002;&#x5982;&#x679C;&#x4E24;&#x8005;&#x5BF9;&#x540C;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x8BDD;, &#x53EA;&#x6709;<property>&#x6709;&#x7528;</property></property></constructor-arg></p>
+<h5 id="&#x9488;&#x5BF9;&#x548C;&#x7B49;&#x901A;&#x7528;&#x7684;&#x5185;&#x5D4C;&#x5143;&#x7D20;">&#x9488;&#x5BF9;<property>&#x548C;<constructor-arg>&#x7B49;&#x901A;&#x7528;&#x7684;&#x5185;&#x5D4C;&#x5143;&#x7D20;</constructor-arg></property></h5>
+<ol>
+<li><h5 id="&#x3002;&#x4E0D;&#x4F46;&#x53EF;&#x4EE5;&#x6307;&#x5B9A;string&#x7C7B;&#x578B;&#x7684;&#x6570;&#x636E;&#x800C;&#x4E14;&#x8FD8;&#x53EF;&#x4EE5;&#x6307;&#x5B9A;&#x5176;&#x4ED6;java&#x8BED;&#x8A00;&#x4E2D;&#x7684;&#x539F;&#x59CB;&#x7C7B;&#x578B;&#x4EE5;&#x53CA;&#x5B83;&#x4EEC;&#x7684;&#x5305;&#x88C5;&#x7C7B;&#x578B;&#x3002;int&#x3001;integer&#x7B49;&#x3002;&#x5B83;&#x662F;&#x6700;&#x5E95;&#x5C42;&#x5143;&#x7D20;&#x3002;"><value>&#x3002;&#x4E0D;&#x4F46;&#x53EF;&#x4EE5;&#x6307;&#x5B9A;String&#x7C7B;&#x578B;&#x7684;&#x6570;&#x636E;,&#x800C;&#x4E14;&#x8FD8;&#x53EF;&#x4EE5;&#x6307;&#x5B9A;&#x5176;&#x4ED6;Java&#x8BED;&#x8A00;&#x4E2D;&#x7684;&#x539F;&#x59CB;&#x7C7B;&#x578B;&#x4EE5;&#x53CA;&#x5B83;&#x4EEC;&#x7684;&#x5305;&#x88C5;&#x7C7B;&#x578B;&#x3002;int&#x3001;Integer&#x7B49;&#x3002;&#x5B83;&#x662F;&#x6700;&#x5E95;&#x5C42;&#x5143;&#x7D20;&#x3002;</value></h5>
+</li>
+<li><p><ref>&#x3002;&#x5F15;&#x7528;&#x5BB9;&#x5668;&#x4E2D;&#x5176;&#x4ED6;&#x7684;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;&#x3002;&#x53EF;&#x80FD;&#x901A;&#x8FC7;ref&#x7684;local&#x3001;parent&#x548C;bean&#x5C5E;&#x6027;&#x6765;&#x6307;&#x5B9A;&#x5F15;&#x7528;&#x7684;&#x5BF9;&#x8C61;&#x7684;beanName&#x662F;&#x4EC0;&#x4E48;&#x3002;</ref></p>
+<pre class="language-"><code class="lang-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ref</span> <span class="token attr-name">local</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span><span class="token punctuation">&quot;</span></span> <span class="token punctuation">/&gt;</span></span>
+</code></pre>
+<p>local&#x3001;parent&#x548C;bean&#x7684;&#x533A;&#x522B;&#x5728;&#x4E8E;:</p>
+<ul>
+<li>local&#x53EA;&#x80FD;&#x6307;&#x5B9A;&#x4E0E;&#x5F53;&#x524D;&#x914D;&#x7F6E;&#x7684;&#x5BF9;&#x8C61;&#x5728;&#x540C;&#x4E00;&#x4E2A;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x7684;&#x5BF9;&#x8C61;&#x5B9A;&#x4E49;&#x7684;&#x540D;&#x79F0;&#xFF08;&#x53EF;&#x4EE5;&#x83B7;&#x5F97;XML&#x89E3;&#x6790;&#x5668; &#x7684;id&#x7EA6;&#x675F;&#x9A8C;&#x8BC1;&#x652F;&#x6301;&#xFF09;&#xFF1B;</li>
+<li>parent&#x5219;&#x53EA;&#x80FD;&#x6307;&#x5B9A;&#x4F4D;&#x4E8E;&#x5F53;&#x524D;&#x5BB9;&#x5668;&#x7684;&#x7236;&#x5BB9;&#x5668;&#x4E2D;&#x5B9A;&#x4E49;&#x7684;&#x5BF9;&#x8C61;&#x5F15;&#x7528;&#xFF1B;</li>
+</ul>
+<p>&#x6CE8;&#x610F; BeanFactory&#x4EE5;&#x5206;&#x5C42;&#x6B21;&#xFF08;&#x901A;&#x8FC7;&#x5B9E;&#x73B0;HierarchicalBeanFactory&#x63A5;&#x53E3; &#xFF09;,&#x5BB9;&#x5668;A&#x5728;&#x521D;&#x59CB;&#x5316;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x53EF;&#x4EE5;&#x9996;&#x5148;&#x52A0;&#x8F7D;&#x5BB9;&#x5668;B&#x4E2D;&#x7684;&#x6240;&#x6709;&#x5BF9;&#x8C61;&#x5B9A;&#x4E49;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x52A0;&#x8F7D;&#x81EA;&#x8EAB;&#x7684;&#x5BF9;&#x8C61;&#x5B9A;&#x4E49;&#xFF0C;&#x8FD9;&#x6837;&#xFF0C;&#x5BB9;&#x5668; B&#x5C31;&#x6210;&#x4E3A;&#x4E86;&#x5BB9;&#x5668;A&#x7684;&#x7236;&#x5BB9;&#x5668;&#xFF0C;&#x5BB9;&#x5668;A&#x53EF;&#x4EE5;&#x5F15;&#x7528;&#x5BB9;&#x5668;B&#x4E2D;&#x7684;&#x6240;&#x6709;&#x5BF9;&#x8C61;&#x5B9A;&#x4E49;&#xFF1A;</p>
+<pre class="language-"><code class="lang-java"><span class="token class-name">BeanFactory</span> parentcontainer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">XmlBeanFactory</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ClassPathResource</span><span class="token punctuation">(</span><span class="token string">&quot;&#x7236;&#x5BB9;&#x5668;&#x9149;&#x5DF1;&#x7F6E;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span>&#xFF1B;
+<span class="token class-name">BeanFactory</span> childcontainer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">XmlBeanFactory</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ClassPathResource</span><span class="token punctuation">(</span><span class="token string">&quot;&#x5B50;&#x5BB9;&#x5668;&#x767E;&#x5DF1;&#x7F6E;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>parentContainer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</li>
+</ol>
+<p>   childcontainer&#x4E2D;&#x5B9A;&#x4E49;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x5982;&#x679C;&#x901A;&#x8FC7;parents&#x6307;&#x5B9A;&#x4F9D;&#x8D56;&#xFF0C;&#x5219;&#x53EA;&#x80FD;&#x5F15;&#x7528;parentContainer&#x4E2D; &#x7684;&#x5BF9;&#x8C61;&#x5B9A;&#x4E49;&#x3002;</p>
+<ul>
+<li>bean &#x5219;&#x57FA;&#x672C;&#x901A;&#x5403;,&#x6240;&#x4EE5;,&#x901A;&#x5E38;&#x60C5;&#x51B5;&#x4E0B;,&#x76F4;&#x63A5;&#x4F7F;&#x7528;bean&#x6765;&#x6307;&#x5B9A;&#x5BF9;&#x8C61;&#x5F15;&#x7528;&#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#x3002;</li>
+</ul>
+<ol>
+<li><p><idref>&#x3002;&#x5982;&#x679C;&#x8981;&#x4E3A;&#x5F53;&#x524D;&#x5BF9;&#x8C61;&#x6CE8;&#x5165;&#x6240;&#x4F9D;&#x8D56;&#x7684;&#x5BF9;&#x8C61;&#x7684;&#x540D;&#x79F0;,&#x800C;&#x4E0D;&#x662F;&#x5F15;&#x7528;,&#x90A3;&#x4E48;&#x901A;&#x5E38;&#x60C5;&#x51B5;&#x4E0B;,&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<value>&#x6765;&#x8FBE;&#x5230;&#x8FD9;&#x4E2A;&#x76EE;&#x7684;&#x3002;</value></idref></p>
+<pre class="language-"><code class="lang-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>newListenterBean<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">&gt;</span></span>newList<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+<p>&#x4F46;&#x662F;&#x5BF9;&#x4E8E;&#x8FD9;&#x79CD;&#x573A;&#x5408;,&#x4F7F;&#x7528;idref&#x90FD;&#x662F;&#x6700;&#x5408;&#x9002;&#x7684;,&#x56E0;&#x4E3A;&#x4F7F;&#x7528;idref,&#x5BB9;&#x5668;&#x5728;&#x89E3;&#x6790;&#x914D;&#x7F6E;&#x7684;&#x65F6;&#x5019;&#x5C31;&#x53EF;&#x4EE5;&#x5E2E;&#x4F60;&#x68C0;&#x67E5;&#x8FD9;&#x4E2A;beanName&#x5230;&#x5E95;&#x662F;&#x5426;&#x5B58;&#x5728;,&#x800C;&#x4E0D;&#x7528;&#x7B49;&#x5230;&#x8FD0;&#x884C;&#x65F6;&#x624D;&#x53D1;&#x73B0;&#x8FD9;&#x4E2A;beanName&#x5BF9;&#x5E94;&#x7684;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;&#x4E0D;&#x5B58;&#x5728;&#x3002;idref&#x6CE8;&#x5165;&#x7684;&#x662F;&#x76EE;&#x6807;bean&#x7684;id&#x800C;&#x4E0D;&#x662F;&#x76EE;&#x6807;bean&#x7684;&#x5B9E;&#x4F8B;&#x3002;&#x800C;ref&#x5B8C;&#x5168;&#x4E0D;&#x540C;,ref&#x5143;&#x7D20;&#x662F;&#x5C06;&#x76EE;&#x6807;bean&#x5B9A;&#x4E49;&#x7684;&#x5B9E;&#x4F8B;&#x6CE8;&#x5165;&#x5230;&#x5C5E;&#x6027;&#x6216;&#x6784;&#x9020;&#x51FD;&#x6570;&#x4E2D;&#x3002;</p>
+</li>
+<li><p>&#x5185;&#x90E8;<bean>&#x3002;&#x6709;&#x70B9;&#x50CF;&#x5185;&#x90E8;&#x7C7B;, &#x6240;&#x4F9D;&#x8D56;&#x7684;&#x5BF9;&#x8C61;&#x53EA;&#x6709;&#x5F53;&#x524D;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x5F15;&#x7528;,&#x6216;&#x8005;&#x67D0;&#x4E2A;&#x5BF9;&#x8C61;&#x5B9A;&#x4E49;&#x6211;&#x4EEC;&#x4E0D;&#x60F3;&#x5176;&#x4ED6;&#x5BF9;&#x8C61;&#x901A;&#x8FC7;<ref>&#x5F15;&#x7528;&#x5230;&#x5B83;&#x3002;</ref></bean></p>
+</li>
+<li><p><list>&#x3002;<list>&#x5BF9;&#x5E94;&#x6CE8;&#x5165;&#x5BF9;&#x8C61;&#x7C7B;&#x578B;&#x4E3A;java.util.List&#x53CA;&#x5176;&#x5B50;&#x7C7B;&#x6216;&#x8005;&#x6570;&#x7EC4;&#x7C7B;&#x578B;&#x7684;&#x4F9D;&#x8D56;&#x5BF9;&#x8C61;&#x3002;</list></list></p>
+</li>
+<li><p><set>&#x3002;&#x65E0;&#x5E8F;,&#x5BF9;&#x5E94;&#x6CE8;&#x5165;&#x7C7B;&#x578B;&#x4E3A;java.util.Set&#x6216;&#x8005;&#x5B50;&#x7C7B;&#x7684;&#x4F9D;&#x8D56;&#x5BF9;&#x8C61;&#x3002;</set></p>
+</li>
+<li><p><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>map</span><span class="token punctuation">&gt;</span></span></code>&#x3002;&#x6620;&#x5C04;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x6307;&#x5B9A;&#x7684;&#x952E;(key)&#x6765;&#x83B7;&#x53D6;&#x76F8;&#x5E94;&#x7684;&#x503C;&#x3002;&#x6CE8;&#x5165;java.util.Map&#x6216;&#x8005;&#x5176;&#x5B50;&#x7C7B;&#x7C7B;&#x578B;&#x7684;&#x4F9D;&#x8D56;&#x5BF9;&#x8C61;&#x3002;&#x5B83;&#x53EF;&#x4EE5;&#x5185;&#x5D4C;&#x4EFB;&#x610F;&#x591A;&#x4E2A;<entry>, &#x6BCF;&#x4E00;&#x4E2A;<entry>&#x90FD;&#x9700;&#x8981;&#x4E3A;&#x5176;&#x6307;&#x5B9A;&#x4E00;&#x4E2A;&#x952E;&#x548C;&#x4E00;&#x4E2A;&#x503C;&#x3002;</entry></entry></p>
+<ul>
+<li><entry>&#x7684;&#x952E;, key&#x6216;&#x8005;key-ref&#x6765;&#x6307;&#x5B9A;&#x952E;&#x3002;</entry></li>
+<li><entry>&#x7684;&#x503C;, &#x9664;&#x4E86;<key>&#x662F;&#x7528;&#x6765;&#x6307;&#x5B9A;&#x952E;&#x7684;,&#x5176;&#x4ED6;&#x5143;&#x7D20;&#x53EF;&#x4EE5;&#x4EFB;&#x610F;&#x4F7F;&#x7528;,&#x6765;&#x6307;&#x5B9A;entry&#x5BF9;&#x5E94;&#x7684;&#x503C;&#x3002;&#x4E5F;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4F7F;&#x7528;value&#x3001;value-ref&#x8FD9;&#x4E24;&#x4E2A;&#x5C5E;&#x6027;&#x6765;&#x6307;&#x5B9A;&#x3002;</key></entry></li>
+</ul>
+<p><a href="https://cdn.jsdelivr.net/gh/Clarencezero/poi/1552011681218.png" data-lightbox="7548db1b-ff01-4b92-8439-31e5edc850f8" data-title="1552011681218" target="_blank"><img src="https://cdn.jsdelivr.net/gh/Clarencezero/poi/1552011681218.png" alt="1552011681218"></a></p>
+</li>
+<li><p><props>&#x3002;&#x662F;&#x7B80;&#x5316;&#x540E;&#x7684;<map>&#x3002;&#x8BE5;&#x5143;&#x7D20;&#x5BF9;&#x5E94;&#x914D;&#x7F6E;&#x7C7B;&#x578B;&#x4E3A;java.util.Properties&#x7684;&#x5BF9;&#x8C61;&#x4F9D;&#x8D56;&#x3002;</map></props></p>
+<pre class="language-"><code class="lang-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>mylover<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>props</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>prop</span> <span class="token attr-name">key</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>name<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>&#x5F20;&#x6C76;&#x6CA3;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>prop</span><span class="token punctuation">&gt;</span></span>
+        ...
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>props</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+</li>
+<li><p><null>&#x3002;&#x8FD9;&#x662F;&#x6700;&#x7B80;&#x5355;&#x7684;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x3002;&#x5BF9;&#x4E8E;String&#x6765;&#x8BF4;,&#x5982;&#x679C;&#x4F7F;&#x7528;<value></value>&#x6CE8;&#x5165;&#x7684;&#x8BDD;,&#x5F97;&#x5230;&#x7684;&#x7ED3;&#x679C;&#x4E3A;&quot;&quot;, &#x800C;&#x4E0D;&#x662F;null&#x3002;&#x6240;&#x4EE5;, &#x5982;&#x679C;&#x9700;&#x8981;&#x4E3A;&#x8FD9;&#x4E2A;string&#x5BF9;&#x5E94;&#x7684;&#x503C;&#x6CE8;&#x5165;null&#x7684;&#x8BDD;,&#x8BF7;&#x4F7F;&#x7528;<null>&#x3002;</null></null></p>
+</li>
+</ol>
+<h5 id="4333-depends-on">4.3.3.3 depends-on</h5>
+<p>&#x5BF9;&#x8C61;A&#x4F9D;&#x8D56;&#x4E8E;&#x5BF9;&#x8C61;B,&#x9700;&#x8981;&#x5728;&#x5B9E;&#x4F8B;&#x5316;&#x5BF9;&#x8C61;A&#x4E4B;&#x524D;&#x9996;&#x5148;&#x5B9E;&#x4F8B;&#x5316;&#x5BF9;&#x8C61;B&#x3002;&#x5927;&#x90E8;&#x5206;&#x60C5;&#x51B5;&#x4E0B;,&#x662F;&#x90A3;&#x4E9B;&#x62E5;&#x6709;&#x9759;&#x6001;&#x4EE3;&#x7801;&#x5757;&#x521D;&#x59CB;&#x5316;&#x4EE3;&#x7801;&#x6216;&#x8005;&#x6570;&#x636E;&#x5E93;&#x9A71;&#x52A8;&#x6CE8;&#x518C;&#x4E4B;&#x7C7B;&#x7684;&#x573A;&#x666F;&#x3002;</p>
+<p>&#x5982;&#x679C;A&#x62E5;&#x6709;&#x591A;&#x4E2A;&#x7C7B;&#x4F3C;&#x7684;&#x975E;&#x663E;&#x793A;&#x4F9D;&#x8D56;&#x5173;&#x7CFB;,&#x90A3;&#x4E48;, &#x4F60;&#x53EF;&#x4EE5;&#x5728;A&#x7684;depends-on&#x4E2D;&#x901A;&#x8FC7;&#x9017;&#x53F7;&#x5206;&#x5272;&#x5404;&#x4E2A;beanName&#x3002;</p>
+<h5 id="4334-autowire">4.3.3.4 autowire</h5>
+<p>&#x53EF;&#x4EE5;&#x6307;&#x5B9A;&#x5F53;&#x524D;bean&#x5B9A;&#x4E49;&#x91C7;&#x7528;&#x67D0;&#x79CD;&#x7C7B;&#x578B;&#x7684;&#x81EA;&#x52A8;&#x7ED1;&#x5B9A;&#x6A21;&#x5F0F;&#x3002;&#x8FD9;&#x6837;,&#x4F60;&#x5C31;&#x65E0;&#x9700;&#x624B;&#x5DE5;&#x660E;&#x786E;&#x6307;&#x5B9A;&#x8BE5;bean&#x5B9A;&#x4E49;&#x76F8;&#x5173;&#x7684;&#x4F9D;&#x8D56;&#x5173;&#x7CFB;,&#x4ECE;&#x800C;&#x4E5F;&#x53EF;&#x4EE5;&#x514D;&#x53BB;&#x4E00;&#x4E9B;&#x624B;&#x5DE5;&#x8F93;&#x5165;&#x7684;&#x5DE5;&#x4F5C;&#x91CF;&#x3002;</p>
+<ol>
+<li>no&#x3002;&#x9ED8;&#x8BA4;&#x7684;&#x81EA;&#x52A8;&#x7ED1;&#x5B9A;&#x6A21;&#x5F0F;, &#x4E5F;&#x5C31;&#x662F;&#x4E0D;&#x91C7;&#x7528;&#x4EFB;&#x4F55;&#x5F62;&#x5F0F;&#x7684;&#x81EA;&#x52A8;&#x7ED1;&#x5B9A;,&#x5B8C;&#x5168;&#x4F9D;&#x8D56;&#x624B;&#x5DE5;&#x660E;&#x786E;&#x914D;&#x7F6E;&#x5404;&#x4E2A;bean&#x4E4B;&#x95F4;&#x7684;&#x4F9D;&#x8D56;&#x5173;&#x7CFB;&#x3002;</li>
+<li>byName&#x3002;&#x6309;&#x7167;&#x7C7B;&#x4E2D;&#x58F0;&#x660E;&#x7684;&#x5B9E;&#x4F8B;&#x53D8;&#x91CF;&#x7684;&#x540D;&#x79F0;,&#x4E0E;XML&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E2D;&#x58F0;&#x660E;&#x7684;bean&#x5B9A;&#x4E49;&#x7684;beanName&#x7684;&#x503C;&#x8FDB;&#x884C;&#x5339;&#x914D;,&#x76F8;&#x5339;&#x914D;&#x7684;bean&#x5B9A;&#x4E49;&#x5C06;&#x88AB;&#x81EA;&#x52A8;&#x7ED1;&#x5B9A;&#x5230;&#x5F53;&#x524D;&#x5B9E;&#x4F8B;&#x53D8;&#x91CF;&#x4E0A;&#x3002;</li>
+</ol>
+<p>&#x5176;&#x5B9E;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x4E0D;&#x7528;&#x663E;&#x793A;&#x6307;&#x660E;&#x54EA;&#x4E2A;&#x5C5E;&#x4E8E;&#x54EA;&#x4E2A;&#x3002;&#x800C;&#x662F;&#x81EA;&#x52A8;&#x901A;&#x8FC7;&#x540D;&#x79F0;&#x6765;&#x5339;&#x914D;&#x3002;</p>
+<ol>
+<li><p>byType&#x3002;&#x5BB9;&#x5668;&#x4F1A;&#x6839;&#x636E;&#x5F53;&#x524D;bean&#x5B9A;&#x4E49;&#x7C7B;&#x578B;,&#x5206;&#x6790;&#x5176;&#x76F8;&#x5E94;&#x7684;&#x4F9D;&#x8D56;&#x5BF9;&#x8C61;&#x7C7B;&#x578B;,&#x7136;&#x540E;&#x5230;&#x5BB9;&#x5668;&#x6240;&#x7BA1;&#x7406;&#x7684;&#x6240;&#x6709;bean&#x5B9A;&#x4E49;&#x4E2D;&#x5BFB;&#x627E;&#x4E0E;&#x4F9D;&#x8D56;&#x5BF9;&#x8C61;&#x7C7B;&#x578B;&#x76F8;&#x540C;&#x7684;bean&#x5B9A;&#x4E49;,&#x7136;&#x540E;&#x5C06;&#x627E;&#x5230;&#x7684;&#x7B26;&#x5408;&#x6761;&#x4EF6;&#x7684;bean&#x81EA;&#x52A8;&#x7ED1;&#x5B9A;&#x5230;&#x5F53;&#x524D;bean&#x5B9A;&#x4E49;&#x3002;</p>
+</li>
+<li><p>constructor&#x3002;&#x9488;&#x5BF9;&#x6784;&#x9020;&#x65B9;&#x6CD5;&#x53C2;&#x6570;&#x7684;&#x7C7B;&#x578B;&#x800C;&#x8FDB;&#x884C;&#x7684;&#x81EA;&#x52A8;&#x7ED1;&#x5B9A;&#x3002;&#x662F;byType&#x7C7B;&#x578B;&#x7684;&#x7ED1;&#x5B9A;&#x3002;&#x5982;&#x679C;&#x627E;&#x5230;&#x4E0D;&#x6B62;&#x4E00;&#x4E2A;&#x7B26;&#x5408;&#x6761;&#x4EF6;&#x7684;bean&#x5B9A;&#x4E49;,&#x90A3;&#x4E48;&#x5BB9;&#x5668;&#x4F1A;&#x8FD4;&#x56DE;&#x9519;&#x8BEF;&#x3002;</p>
+</li>
+<li><p>autodetect&#x3002;&#x662F;byTeyp&#x548C;constructor&#x6A21;&#x5F0F;&#x7684;&#x7ED3;&#x5408;&#x4F53;,&#x5982;&#x679C;&#x5BF9;&#x8C61;&#x62E5;&#x6709;&#x9ED8;&#x8BA4;&#x65E0;&#x53C2;&#x6570;&#x7684;&#x6784;&#x9020;&#x65B9;&#x6CD5;,&#x5BB9;&#x5668;&#x4F1A;&#x4F18;&#x5148;&#x8003;&#x8651;byType&#x7684;&#x81EA;&#x52A8;&#x7ED1;&#x5B9A;&#x6A21;&#x5F0F;&#x3002;&#x5426;&#x5219;,&#x4F1A;&#x4F7F;&#x7528;constructor&#x6A21;&#x5F0F;&#x3002;</p>
+</li>
+</ol>
+<p>&#x901A;&#x5E38;&#x60C5;&#x51B5;&#x4E0B;, &#x4E0D;&#x4ECB;&#x610F;&#x591A;&#x6572;&#x51E0;&#x4E2A;&#x5B57;&#x7B26;&#x3002;</p>
+<h5 id="4335-lazy-init">4.3.3.5 lazy-init</h5>
+<p>&#x5EF6;&#x8FDF;&#x521D;&#x59CB;&#x5316;&#x3002;&#x4E3B;&#x8981;&#x662F;&#x53EF;&#x4EE5;&#x9488;&#x5BF9;Applicationcontext&#x5BB9;&#x5668;&#x7684;bean&#x521D;&#x59CB;&#x5316;&#x884C;&#x4E3A;&#x65BD;&#x4EE5;&#x66F4;&#x591A;&#x7684;&#x63A7;&#x5236;&#x3002;&#x4E0E;BeanFactory&#x4E0D;&#x540C;,ApplicationContext&#x5728;&#x5BB9;&#x5668;&#x542F;&#x52A8;&#x7684;&#x65F6;&#x5019;,&#x5C31;&#x4F1A;&#x9A6C;&#x4E0A;&#x5BF9;&#x6240;&#x6709;&#x7684;&quot;singleton&#x7684;bean&#x5B9A;&#x4E49;&quot;&#x8FDB;&#x884C;&#x5B9E;&#x4F8B;&#x5316;&#x64CD;&#x4F5C;&#x3002;&#x901A;&#x5E38;&#x8FD9;&#x79CD;&#x9ED8;&#x8BA4;&#x884C;&#x4E3A;&#x662F;&#x597D;&#x7684;,&#x56E0;&#x4E3A;&#x5982;&#x679C;&#x7CFB;&#x7EDF;&#x5B58;&#x5728;&#x95EE;&#x9898;, &#x53EF;&#x4EE5;&#x7B2C;&#x4E00;&#x65F6;&#x95F4;&#x53D1;&#x73B0;&#x8FD9;&#x4E9B;&#x95EE;&#x9898;, &#x4F46;&#x6709;&#x65F6;&#x5019;, &#x6211;&#x4EEC;&#x4E0D;&#x60F3;&#x5728;&#x5BB9;&#x5668;&#x542F;&#x52A8;&#x540E;&#x5C31;&#x76F4;&#x63A5;&#x5B9E;&#x4F8B;&#x5316;,&#x603B;&#x4E4B;, &#x6211;&#x4EEC;&#x60F3;&#x6539;&#x53D8;&#x67D0;&#x4E2A;&#x6216;&#x8005;&#x67D0;&#x4E9B;bean&#x5B9A;&#x4E49;&#x5728;ApplicationContext&#x5BB9;&#x5668;&#x4E2D;&#x7684;&#x9ED8;&#x8BA4;&#x5B9E;&#x4F8B;&#x5316;&#x65F6;&#x673A;&#x3002;&#x8FD9;&#x6837;, &#x5C31;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;<bean>&#x7684;lazy-init&#x5C5E;&#x6027;&#x6765;&#x63A7;&#x5236;&#x8FD9;&#x79CD;&#x521D;&#x59CB;&#x5316;&#x884C;&#x4E3A;&#x3002;</bean></p>
+<pre class="language-"><code class="lang-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>bena</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>mylove<span class="token punctuation">&quot;</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>..<span class="token punctuation">&quot;</span></span> <span class="token attr-name">lazy-init</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>true<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/&gt;</span></span>
+</code></pre>
+<p>&#x8FD9;&#x6837;,ApplicationContext&#x5BB9;&#x5668;&#x5728;&#x542F;&#x52A8;&#x7684;&#x65F6;&#x5019;, &#x53EA;&#x4F1A;&#x9ED8;&#x8BA4;&#x521D;&#x59CB;&#x5316;&#x975E;&#x5EF6;&#x8FDF;&#x52A0;&#x8F7D;&#x7684;bean&#x3002;</p>
+<p>&#x5BF9;&#x4E8E;&#x5B58;&#x5728;&#x4F9D;&#x8D56;&#x5173;&#x7CFB;&#x7684;bean&#x6765;&#x8BF4;, &#x5982;&#x679C;&#x67D0;&#x4E2A;&#x975E;&#x5EF6;&#x8FDF;&#x7684;bean&#x5B9A;&#x4E49;&#x4F9D;&#x8D56;&#x4E8E;&#x5EF6;&#x8FDF;bean, &#x90A3;&#x4E48;,&#x5BB9;&#x5668;&#x8FD8;&#x662F;&#x4F1A;&#x9996;&#x5148;&#x5B9E;&#x4F8B;&#x5316;&#x5EF6;&#x8FDF;bean,&#x518D;&#x5B9E;&#x4F8B;&#x5316;&#x540E;&#x8005;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x6211;&#x4EEC;&#x771F;&#x60F3;&#x4FDD; &#x8BC1;lazy-in&#x8BA9;-bean&#x2014;&#x5B9A;&#x4F1A;&#x88AB;&#x5EF6;&#x8FDF;&#x521D;&#x59CB;&#x5316;&#x7684;&#x8BDD;&#xFF0C;&#x5C31;&#x9700;&#x8981;&#x4FDD;&#x8BC1;&#x4F9D;&#x8D56;&#x4E8E;&#x8BE5;bean&#x5B9A;&#x4E49;&#x7684;&#x5176;&#x4ED6;bean&#x5B9A;&#x4E49;&#x4E5F;&#x540C;&#x6837;&#x8BBE;&#x7F6E;&#x4E3A;&#x5EF6;&#x8FDF;&#x521D;&#x59CB;&#x5316;&#x3002;&#x5F53;&#x7136;,&#x53EF;&#x4EE5;&#x5728;<beans>&#x4E0A;&#x8BBE;&#x7F6E;default-lazy-init=&quot;true&quot;&#x6765;&#x5B9A;&#x4E49;&#x6240;&#x6709;bean&#x9700;&#x8981;&#x5EF6;&#x8FDF;&#x521D;&#x59CB;&#x5316;&#x3002;</beans></p>
+<h4 id="434-&#x7EE7;&#x627F;">4.3.4 &#x7EE7;&#x627F;</h4>
+<pre class="language-"><code class="lang-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>bean</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>subBean<span class="token punctuation">&quot;</span></span> <span class="token attr-name">parent</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>supBean<span class="token punctuation">&quot;</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>com.SupBean<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>bean</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+<p>&#x8FD9;&#x6837;&#x5C31;&#x7EE7;&#x627F;&#x4E86;supBean&#x5B9A;&#x4E49;&#x7684;&#x9ED8;&#x8BA4;&#x503C;,&#x53EA;&#x9700;&#x8981;&#x5C06;&#x7279;&#x5B9A;&#x7684;&#x5C5E;&#x6027;&#x8FDB;&#x884C;&#x66F4;&#x6539;,&#x800C;&#x4E0D;&#x8981;&#x5168;&#x90E8;&#x53C8;&#x91CD;&#x65B0;&#x5B9A;&#x4E49;&#x4E00;&#x904D;&#x3002;</p>
+<p>parent&#x5C5E;&#x6027;&#x8FD8;&#x53EF;&#x4EE5;&#x4E0E;abstract&#x5C5E;&#x6027;&#x7ED3;&#x5408;&#x4F7F;&#x7528;,&#x8FBE;&#x5230;&#x5C06;&#x76F8;&#x5E94;bean&#x5B9D;&#x5C9B;&#x6A21;&#x677F;&#x5316;&#x7684;&#x76EE;&#x7684;&#x3002;</p>
+<p>abstract=&quot;true&quot;: &#x8868;&#x660E;&#x8FD9;&#x4E2A;bean&#x4E0D;&#x9700;&#x8981;&#x5B9E;&#x4F8B;&#x5316;&#x3002;&#x901A;&#x8FC7;parent&#x6307;&#x5411;&#x8FD9;&#x4E2A;&#x6A21;&#x677F;&#x5B9A;&#x4E49;,&#x5C31;&#x62E5;&#x6709;&#x4E86;&#x8BE5;&#x6A21;&#x677F;&#x5B9A;&#x4E49;&#x7684;&#x6240;&#x6709;&#x5C5E;&#x6027;&#x914D;&#x7F6E;&#x3002;&#x5F53;&#x591A;&#x4E2A;bean&#x5B9A;&#x4E49;&#x62E5;&#x6709;&#x591A;&#x4E2A;&#x76F8;&#x540C;&#x5C5E;&#x6027;&#x914D;&#x7F6E;&#x7684;&#x65F6;&#x5019;,&#x4F60;&#x4F1A;&#x53D1;&#x73B0;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x53EF;&#x4EE5;&#x5E26;&#x6765;&#x5F88;&#x5927;&#x7684;&#x4FBF;&#x5229;&#x3002;</p>
+<h4 id="435-bean&#x7684;scope">4.3.5 bean&#x7684;scope</h4>
+<p>BeanFactory&#x9664;&#x4E86;&#x4F5C;&#x4E3A;&#x8F7B;&#x91CF;&#x7EA7;&#x5BB9;&#x5668;,&#x8FD8;&#x5305;&#x62EC;&#x5BF9;&#x8C61;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x7BA1;&#x7406;&#x3002;</p>
+<p>scope&#x7528;&#x6765;&#x58F0;&#x660E;&#x5BB9;&#x5668;&#x4E2D;&#x7684;&#x5BF9;&#x8C61;&#x6240;&#x5E94;&#x8BE5;&#x5904;&#x7684;&#x9650;&#x5B9A;&#x573A;&#x666F;&#x6216;&#x8005;&#x8BF4;&#x8BE5;&#x5BF9;&#x8C61;&#x7684;&#x5B58;&#x6D3B;&#x65F6;&#x95F4;,&#x5373;&#x5BB9;&#x5668;&#x5728;&#x5BF9;&#x8C61;&#x8FDB;&#x5165;&#x5176;&#x76F8;&#x5E94;scope&#x4E4B;&#x524D;,&#x751F;&#x6210;&#x5E76;&#x88C5;&#x914D;&#x8FD9;&#x4E9B;&#x5BF9;&#x8C61;, &#x5728;&#x8BE5;&#x5BF9;&#x8C61;&#x4E0D;&#x518D;&#x5904;&#x4E8E;&#x8FD9;&#x4E9B;scope&#x7684;&#x9650;&#x5B9A;&#x4E4B;&#x540E;, &#x5BB9;&#x5668;&#x901A;&#x5E38;&#x4F1A;&#x9500;&#x6BC1;&#x8FD9;&#x4E9B;&#x5BF9;&#x8C61;&#x3002;</p>
+<ul>
+<li><ol>
+<li><p>singleton&#x3002;</p>
+<p>&#x5728;Spring IoC&#x5BB9;&#x5668;&#x4E2D;&#x53EA;&#x5B58;&#x5728;&#x4E00;&#x4E2A;&#x5B9E;&#x4F8B;,&#x6240;&#x6709;&#x5BF9;&#x8BE5;&#x5BF9;&#x8C61;&#x7684;&#x5F15;&#x7528;&#x5C06;&#x5171;&#x4EAB;&#x8FD9;&#x4E2A;&#x5B9E;&#x4F8B;&#x3002;&#x8BE5;&#x5B9E;&#x4F8B;&#x4ECE;&#x5BB9;&#x5668;&#x542F;&#x52A8;,&#x5E76;&#x56E0;&#x4E3A;&#x7B2C;&#x4E00;&#x6B21;&#x88AB;&#x8BF7;&#x6C42;&#x800C;&#x521D;&#x59CB;&#x5316;&#x4E4B;&#x540E;,&#x5C06;&#x4E00;&#x76F4;&#x5B58;&#x6D3B;&#x5230;&#x5BB9;&#x5668;&#x9000;&#x51FA;,&#x4E5F;&#x5C31;&#x662F;&#x8BF4;, &#x5B83;&#x4E0E;IoC&#x5BB9;&#x5668;&quot;&#x51E0;&#x4E4E;&quot;&#x62E5;&#x6709;&#x76F8;&#x540C;&#x7684;&quot;&#x5BFF;&#x547D;&quot;&#x3002;</p>
+<p><code>&#x6CE8;&#x610F;</code>:&#x4E0D;&#x8981;&#x56E0;&#x4E3A;&#x540D;&#x5B57;&#x7684;&#x539F;&#x56E0;&#x4E0E;&#x5355;&#x4F8B;&#x6A21;&#x5F0F;&#x6DF7;&#x6DC6;,&#x4E8C;&#x8005;&#x7684;&#x8BED;&#x97F3;&#x662F;&#x4E0D;&#x540C;&#x7684;: &#x6807;&#x8BB0;&#x4E3A;singleton&#x7684;ben&#x662F;&#x7531;&#x5BB9;&#x5668;&#x6765;&#x4FDD;&#x8BC1;&#x8FD9;&#x79CD;&#x7C7B;&#x578B;&#x7684;bean&#x5728;&#x540C;&#x4E00;&#x4E2A;&#x5BB9;&#x5668;&#x4E2D;&#x53EA;&#x5B58;&#x5728;&#x4E00;&#x4E2A;&#x5171;&#x4EAB;&#x5B9E;&#x4F8B;; &#x800C;Singleton&#x6A21;&#x5F0F;&#x5219;&#x662F;&#x4FDD;&#x8BC1;&#x5728;&#x540C;&#x4E00;&#x4E2A;Classloader&#x4E2D;&#x53EA;&#x5B58;&#x5728;&#x4E00;&#x4E2A;&#x8FD9;&#x79CD;&#x7C7B;&#x578B;&#x7684;&#x5B9E;&#x4F8B;&#x3002; </p>
+<p>&#x53EF;&#x4EE5;&#x4ECE;&#x4E24;&#x4E2A;&#x65B9;&#x9762;&#x6765;&#x770B;&#x5F85;singleton&#x7684;bean&#x6240;&#x5177;&#x6709;&#x7684;&#x7279;&#x6027;&#x3002;</p>
+<ul>
+<li>&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;&#x6570;&#x91CF;&#x3002;</li>
+<li>&#x5BF9;&#x8C61;&#x5B58;&#x6D3B;&#x65F6;&#x95F4;&#x3002;singleton&#x7C7B;&#x578B;&#x7684;bean&#x5B9A;&#x4E49;,&#x4ECE;&#x5BB9;&#x5668;&#x542F;&#x52A8;,&#x5230;&#x5B83;&#x7B2C;&#x4E00;&#x6B21;&#x88AB;&#x8BF7;&#x6C42;&#x800C;&#x5B9E;&#x4F8B;&#x5316;&#x5F00;&#x59CB;,&#x53EA;&#x8981;&#x5BB9;&#x5668;&#x4E0D;&#x9500;&#x6BC1;&#x6216;&#x8005;&#x9000;&#x51FA;,&#x8BE5;&#x7C7B;&#x578B;bean&#x7684;&#x5355;&#x4E00;&#x5B9E;&#x4F8B;&#x5C31;&#x4F1A;&#x4E00;&#x76F4;&#x5B58;&#x6D3B;&#x3002;</li>
+</ul>
+<pre class="language-"><code class="lang-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>bean</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>mock<span class="token punctuation">&quot;</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>...<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>bean</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>mock1<span class="token punctuation">&quot;</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>...<span class="token punctuation">&quot;</span></span> <span class="token attr-name">singleton</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>true<span class="token punctuation">&quot;</span></span><span class="token punctuation">/&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>bean</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>mock2<span class="token punctuation">&quot;</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>...<span class="token punctuation">&quot;</span></span> <span class="token attr-name">scope</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>singleton<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/&gt;</span></span>
+</code></pre>
+</li>
+</ol>
+</li>
+<li><ol>
+<li>prototype&#x3002;</li>
+</ol>
+<p>&#x200B;    &#x5BB9;&#x5668;&#x5728;&#x63A5;&#x5230;&#x8BE5;&#x7C7B;&#x578B;&#x5BF9;&#x8C61;&#x7684;&#x8BF7;&#x6C42;&#x7684;&#x65F6;&#x5019;,&#x4F1A;&#x6BCF;&#x6B21;&#x90FD;&#x91CD;&#x65B0;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;&#x7ED9;&#x8BF7;&#x6C42;&#x65B9;&#x3002;&#x867D;&#x7136;&#x8FD9;&#x79CD;&#x7C7B;&#x578B;&#x7684;&#x5BF9;&#x8C61;&#x7684;&#x5B9E;&#x4F8B;&#x5316;&#x4EE5;&#x53CA;&#x5C5E;&#x6027;&#x8BBE;&#x7F6E;&#x7B49;&#x5DE5;&#x4F5C;&#x90FD;&#x662F;&#x7531;&#x5BB9;&#x5668;&#x8D1F;&#x8D23;&#x7684;,&#x4F46;&#x662F;&#x53EA;&#x8981;&#x51C6;&#x5907;&#x5B8C;&#x6BD5;,&#x5E76;&#x4E14;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;&#x8FD4;&#x56DE;&#x7ED9;&#x8BF7;&#x6C42;&#x65B9;&#x4E4B;&#x540E;,&#x5BB9;&#x5668;&#x5C31;&#x4E0D;&#x518D;&#x62E5;&#x6709;&#x5F53;&#x524D;&#x8FD4;&#x56DE;&#x5BF9;&#x8C61;&#x7684;&#x5F15;&#x7528;,&#x8BF7;&#x6C42;&#x65B9;&#x9700;&#x8981;&#x81EA;&#x5DF1;&#x8D1F;&#x8D23;&#x5F53;&#x524D;&#x8FD4;&#x56DE;&#x5BF9;&#x8C61;&#x7684;&#x540E;&#x7EE7;&#x751F;&#x547D;&#x5468;&#x671F;&#x7684;&#x7BA1;&#x7406;&#x5DE5;&#x4F5C;,&#x5305;&#x62EC;&#x8BE5;&#x5BF9;&#x8C61;&#x9500;&#x6BC1;&#x3002;</p>
+<p>&#x200B;    &#x901A;&#x5E38;,&#x58F0;&#x660E;&#x4E3A;prototype&#x7684;scope&#x7684;bean&#x5B9A;&#x4E49;&#x7C7B;&#x578B;,&#x90FD;&#x662F;&#x4E00;&#x4E9B;&#x6709;&#x72B6;&#x6001;&#x7684;,&#x6BD4;&#x5982;&#x4FDD;&#x5B58;&#x6BCF;&#x4E2A;&#x987E;&#x5BA2;&#x4FE1;&#x606F;&#x7684;&#x5BF9;&#x8C61;&#x3002;</p>
+</li>
+<li><ol>
+<li><p>request&#x3001;session&#x548C;global session</p>
+<p>&#x8FD9;&#x4E09;&#x4E2A;&#x53EA;&#x9002;&#x7528;&#x4E8E;web&#x5E94;&#x7528;&#x7A0B;&#x5E8F;,&#x901A;&#x5E38;&#x662F;&#x4E0E;XmlWebApplicationContext&#x5171;&#x540C;&#x4F7F;&#x7528;&#x3002;</p>
+<ul>
+<li><p>reqeust&#x3002;</p>
+<p>Spring&#x5BB9;&#x5668;,&#x5373;XmlWebApplicationContext&#x4F1A;&#x4E3A;&#x6BCF;&#x4E2A;HTTP&#x8BF7;&#x6C42;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5168;&#x65B0;&#x7684;Request-Processor&#x5BF9;&#x8C61;&#x4EE3;&#x5F53;&#x524D;&#x8BF7;&#x6C42;&#x4F7F;&#x7528;,&#x5F53;&#x8BF7;&#x6C42;&#x7ED3;&#x675F;&#x540E;,&#x8BE5;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x5373;&#x544A;&#x7ED3;&#x675F;&#x3002;&#x5F53;&#x540C;&#x65F6;&#x6709;10&#x4E2A;HTTP&#x8BF7;&#x6C42;&#x8FDB;&#x6765;&#x65F6;,&#x5BB9;&#x5668;&#x4F1A;&#x5206;&#x522B;&#x9488;&#x5BF9;&#x8FD9;10&#x4E2A;&#x8BF7;&#x6C42;&#x8FD4;&#x56DE;10&#x4E2A;&#x5168;&#x65B0;&#x7684;RequestProcessor&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;,&#x4E14;&#x5B83;&#x4EEC;&#x4E4B;&#x95F4;&#x4E92;&#x4E0D;&#x5E72;&#x6270;&#x3002;&#x4E0D;&#x4E25;&#x683C;&#x8BB2;, request&#x53EF;&#x4EE5;&#x770B;&#x4F5C;prototype&#x7684;&#x4E00;&#x79CD;&#x7279;&#x4F8B;,&#x9664;&#x4E86;&#x573A;&#x666F;&#x66F4;&#x52A0;&#x5177;&#x4F53;&#x4E4B;&#x5916;,&#x8BED;&#x610F;&#x4E0A;&#x5DEE;&#x4E0D;&#x591A;&#x3002;</p>
+</li>
+<li><p>session&#x3002;</p>
+<p>&#x5BF9;&#x4E8E;Web&#x5E94;&#x7528;&#x6765;&#x8BF4;, &#x653E;&#x5230;session&#x4E2D;&#x7684;&#x6700;&#x666E;&#x904D;&#x7684;&#x4FE1;&#x606F;&#x5C31;&#x662F;&#x7528;&#x6237;&#x7684;&#x767B;&#x5F55;&#x4FE1;&#x606F;,&#x5BF9;&#x4E8E;&#x8FD9;&#x79CD;&#x653E;&#x5230;session&#x4E2D;&#x7684;&#x4FE1;&#x606F;, &#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x6307;&#x5B9A;&#x5176;scope&#x4E3A;session&#x3002;</p>
+<pre class="language-"><code class="lang-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>bean</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>userSession<span class="token punctuation">&quot;</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>xxx<span class="token punctuation">&quot;</span></span> <span class="token attr-name">scope</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>session<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/&gt;</span></span>
+</code></pre>
+<p>&#x4E0E;reqeust&#x76F8;&#x6BD4;, &#x9664;&#x4E86;&#x62E5;&#x6709;session scope&#x7684;bean&#x7684;&#x5B9E;&#x4F8B;&#x5177;&#x6709;&#x6BD4;reqeust scope&#x7684;bean &#x53EF;&#x80FD;&#x66F4;&#x957F;&#x7684;&#x5B58;&#x6D3B;&#x65F6;&#x95F4;,&#x5176;&#x4ED6;&#x65B9;&#x9762;&#x771F;&#x662F;&#x6CA1;&#x6709;&#x4EC0;&#x4E48;&#x5DEE;&#x522B;&#x3002;</p>
+</li>
+<li><p>global session</p>
+<p>global session&#x53EA;&#x6709;&#x5E94;&#x7528;&#x5728;&#x57FA;&#x4E8E;protlet&#x7684;web&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x4E2D;&#x90FD;&#x6709;&#x610F;&#x4E49;,&#x5B83;&#x6620;&#x5C04;&#x5230;protlet&#x7684;global&#x8303;&#x56F4;&#x7684;session&#x3002;&#x5982;&#x679C;&#x5728;&#x666E;&#x901A;&#x7684;&#x57FA;&#x4E8E;servlet&#x7684;web&#x5E94;&#x7528;&#x4E2D;&#x4F7F;&#x7528;&#x4E86;&#x8FD9;&#x4E2A;&#x7C7B;&#x578B;&#x7684;scope,&#x5BB9;&#x5668;&#x4F1A;&#x5C06;&#x5176;&#x4F5C;&#x4E3A;&#x666E;&#x901A;&#x7684;session&#x7C7B;&#x578B;&#x7684;scope&#x5BF9;&#x5F85;&#x3002;</p>
+</li>
+<li><p>&#x81EA;&#x5B9A;&#x4E49;scope&#x7C7B;&#x578B;</p>
+<p>&#x4F60;&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x81EA;&#x5DF1;&#x7684;&#x9700;&#x8981;&#x6216;&#x8005;&#x5E94;&#x7528;&#x573A;&#x666F;,&#x6765;&#x6DFB;&#x52A0;&#x81EA;&#x5B9A;&#x4E49;&#x7684;scope&#x7C7B;&#x578B;&#x3002;&#x5B83;&#x4EEC;&#x90FD;&#x5B9E;&#x73B0;&#x4E86;<code>org.springframework.beans.factory.config.Scope</code>&#x63A5;&#x53E3;,&#x5B9A;&#x4E49;&#x5982;&#x4E0B;:</p>
+<pre class="language-"><code class="lang-java"><span class="token keyword">public</span> interafce <span class="token class-name">Scope</span> <span class="token punctuation">{</span>
+    <span class="token class-name">Object</span> <span class="token function">get</span><span class="token punctuation">(</span><span class="token class-name">String</span> name<span class="token punctuation">,</span> <span class="token class-name">ObjectFactory</span> objectFactory<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">Object</span> <span class="token function">remove</span><span class="token punctuation">(</span><span class="token class-name">String</span> name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">void</span> <span class="token function">registerDestructionCallback</span><span class="token punctuation">(</span><span class="token class-name">String</span> name<span class="token punctuation">,</span> <span class="token class-name">Runnable</span> callback<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">String</span> <span class="token function">getConversationId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><code>get</code>&#x548C;<code>remove</code>&#x65B9;&#x6CD5;&#x5FC5;&#x987B;&#x5B9E;&#x73B0;&#x3002;</p>
+<pre class="language-"><code class="lang-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>bean</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>org.springframework.beans.factory.config.CustomScopeConfigurer<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>scopes<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>map</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>entry</span> <span class="token attr-name">key</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>thread<span class="token punctuation">&quot;</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>lchmagd.springjiemi.chapter4.ThreadScope<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>map</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>bean</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>bean</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>jiangjiajun<span class="token punctuation">&quot;</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>lchmagd.wuyuedecangjie.beans.Guangdong<span class="token punctuation">&quot;</span></span> <span class="token attr-name">scope</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>thread<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>constructor-arg</span> <span class="token attr-name">index</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>0<span class="token punctuation">&quot;</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>&#x59DC;&#x5BB6;&#x4FCA;<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>constructor-arg</span> <span class="token attr-name">index</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>1<span class="token punctuation">&quot;</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>25<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>bean</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+<p><code>&#x6CE8;&#x610F;:</code>&#x4F7F;&#x7528;&#x4E86;&#x81EA;&#x5B9A;&#x4E49;scope&#x7684;bean&#x5B9A;&#x4E49;,&#x9700;&#x8981;&#x8BE5;&#x5143;&#x7D20;&#x6765;&#x4E3A;&#x5176;&#x5728;&#x5408;&#x9002;&#x7684;&#x65F6;&#x95F4;&#x521B;&#x5EFA;&#x548C;&#x9500;&#x6BC1;&#x76F8;&#x5E94;&#x7684;&#x4EE3;&#x7406;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;&#x3002;&#x5BF9;&#x4E8E;request&#x3001;session&#x548C;global session &#x6765;&#x8BF4;,&#x4E5F;&#x662F;&#x5982;&#x6B64;&#x3002;</p>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h4 id="436-&#x5DE5;&#x5382;&#x65B9;&#x6CD5;&#x4E0E;factorybean">4.3.6 &#x5DE5;&#x5382;&#x65B9;&#x6CD5;&#x4E0E;FactoryBean</h4>
+<p>&#x5982;&#x679C;&#x8BE5;&#x7C7B;&#x662F;&#x7531;&#x6211;&#x4EEC;&#x8BBE;&#x8BA1;&#x5E76;&#x5F00;&#x53D1;&#x7684;&#xFF0C;&#x90A3;&#x4E48;&#x8FD8;&#x597D;&#x8BF4;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4F9D;&#x8D56;&#x6CE8;&#x5165;&#xFF0C;&#x8BA9;&#x5BB9;&#x5668;&#x5E2E;&#x52A9;&#x6211;&#x4EEC;&#x89E3;&#x9664;&#x63A5;&#x53E3;&#x4E0E;&#x5B9E;&#x73B0;&#x7C7B;&#x4E4B;&#x95F4;&#x7684;&#x8026;&#x5408;&#x6027;&#x3002;&#x4F46;&#x662F;&#xFF0C;&#x6709;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x4F9D;&#x8D56;&#x7B2C;&#x4E09;&#x65B9;&#x5E93;&#xFF0C;&#x9700;&#x8981;&#x5B9E;&#x4F8B;&#x5316;&#x5E76;&#x4F7F;&#x7528;&#x7B2C;&#x4E09;&#x65B9;&#x5E93;&#x4E2D;&#x7684;&#x76F8;&#x5173;&#x7C7B;&#xFF0C;&#x8FD9;&#x65F6;&#xFF0C;&#x63A5;&#x53E3;&#x4E0E;&#x5B9E;&#x73B0;&#x7C7B;&#x7684;&#x8026;&#x5408;&#x6027;&#x9700;&#x8981;&#x5176;&#x4ED6;&#x65B9;&#x5F0F;&#x6765;&#x907F;&#x514D;&#x3002;</p>
+<p>&#x901A;&#x5E38;&#x7684;&#x505A;&#x6CD5;&#x662F;&#x901A;&#x8FC7;&#x4F7F;&#x7528;&#x5DE5;&#x5382;&#x65B9;&#x6CD5;(Factory Method)&#x6A21;&#x5F0F;,&#x63D0;&#x4F9B;&#x4E00;&#x4E2A;&#x5DE5;&#x5382;&#x7C7B;&#x6765;&#x5B9E;&#x73B0;&#x5B9E;&#x4F8B;&#x5316;&#x5177;&#x4F53;&#x7684;&#x63A5;&#x53E3;&#x5B9E;&#x73B0;&#x7C7B;,&#x8FD9;&#x6837;,&#x4E3B;&#x4F53;&#x5BF9;&#x8C61;&#x53EA;&#x9700;&#x8981;&#x4F9D;&#x8D56;&#x5DE5;&#x5382;&#x7C7B;,&#x5177;&#x4F53;&#x4F7F;&#x7528;&#x7684;&#x5B9E;&#x73B0;&#x7C7B;&#x6709;&#x53D8;&#x66F4;&#x7684;&#x8BDD;,&#x53EA;&#x662F;&#x53D8;&#x66F4;&#x5DE5;&#x5382;&#x7C7B;,&#x800C;&#x4E3B;&#x4F53;&#x5BF9;&#x8C61;&#x4E0D;&#x9700;&#x8981;&#x505A;&#x4EFB;&#x4F55;&#x53D8;&#x52A8;&#x3002;</p>
+<pre class="language-"><code class="lang-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>bean</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>factory<span class="token punctuation">&quot;</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>...<span class="token punctuation">&quot;</span></span> <span class="token attr-name">factory-mothod</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>getInstance<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/&gt;</span></span>
+</code></pre>
+<p><code>factory-method:</code> &#x6307;&#x5B9A;&#x5DE5;&#x5382;&#x65B9;&#x6CD5;&#x540D;&#x79F0;,&#x7136;&#x540E;&#x5BB9;&#x5668;&#x8C03;&#x7528;&#x8BE5;&#x9759;&#x6001;&#x5DE5;&#x5382;&#x7C7B;&#x7684;&#x6307;&#x5B9A;&#x5DE5;&#x5382;&#x65B9;&#x6CD5;,&#x5E76;&#x8FD4;&#x56DE;&#x65B9;&#x6CD5;&#x8C03;&#x7528;&#x540E;&#x7684;&#x7ED3;&#x679C;&#x3002;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;<code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>constructor-arg</span><span class="token punctuation">&gt;</span></span></code>&#x6765;&#x6307;&#x5B9A;&#x5DE5;&#x5382;&#x65B9;&#x6CD5;&#x9700;&#x8981;&#x7684;&#x53C2;&#x6570;&#x3002; </p>
+<pre class="language-"><code class="lang-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>bean</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>factory<span class="token punctuation">&quot;</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>...<span class="token punctuation">&quot;</span></span> <span class="token attr-name">factory-mothod</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>getInstance<span class="token punctuation">&quot;</span></span> <span class="token punctuation">&gt;</span></span>
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>constructor-arg</span><span class="token punctuation">&gt;</span></span>
+     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ref</span> <span class="token attr-name">bean</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>foobar<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/&gt;</span></span>
+ <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>constructor-arg</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>bean</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+<ul>
+<li><ol>
+<li>&#x975E;&#x9759;&#x6001;&#x5DE5;&#x5382;&#x65B9;&#x6CD5;(Instance Factory Method)</li>
+</ol>
+<p>&#x4F7F;&#x7528;<code>factory-bean</code>&#x5C5E;&#x6027;&#x6765;&#x6307;&#x5B9A;&#x5DE5;&#x5382;&#x65B9;&#x6CD5;&#x6240;&#x5728;&#x7684;&#x5DE5;&#x5382;&#x7C7B;&#x5B9E;&#x4F8B;,&#x800C;&#x4E0D;&#x662F;&#x901A;&#x8FC7;class&#x5C5E;&#x6027;&#x6765;&#x6307;&#x5B9A;&#x5DE5;&#x5382;&#x65B9;&#x6CD5;&#x6240;&#x5728;&#x7C7B;&#x7684;&#x7C7B;&#x578B;&#x3002;&#x6307;&#x5B9A;&#x5DE5;&#x5382;&#x65B9;&#x6CD5;&#x540D;&#x5219;&#x76F8;&#x540C;,&#x90FD;&#x662F;&#x901A;&#x8FC7;<code>factory-method</code>&#x5C5E;&#x6027;&#x8FDB;&#x884C;&#x7684;&#x3002;</p>
+</li>
+<li><ol>
+<li><p>FactoryBean</p>
+<p><code>FactoryBean</code>&#x662F;Spring&#x5BB9;&#x5668;&#x63D0;&#x4F9B;&#x7684;&#x4E00;&#x79CD;&#x53EF;&#x4EE5;&#x6269;&#x5C55;&#x5BB9;&#x5668;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;&#x5316;&#x903B;&#x8F91;&#x63A5;&#x53E3;, &#x4E0D;&#x8981;&#x5C06;&#x5176;&#x4E0E;&#x5BB9;&#x5668;&#x540D;&#x79F0;BeanFactory&#x76F8;&#x6DF7;&#x6DC6;&#x3002;&#x5B83;&#x672C;&#x8EAB;&#x4E0E;&#x5176;&#x4ED6;&#x6CE8;&#x518C;&#x5230;&#x5BB9;&#x5668;&#x7684;&#x5BF9;&#x8C61;&#x4E00;&#x6837;, &#x53EA;&#x662F;&#x4E00;&#x4E2A;Bean&#x800C;&#x5DF2;,&#x53EA;&#x4E0D;&#x8FC7;, &#x8FD9;&#x79CD;&#x7C7B;&#x578B;&#x7684;Bean&#x672C;&#x8EAB;&#x5C31;&#x662F;&#x751F;&#x4EA7;&#x5BF9;&#x8C61;&#x7684;&#x5DE5;&#x5382;(Factory)&#x3002;</p>
+<p>&#x5F53;&#x67D0;&#x4E9B;&#x5BF9;&#x8C61;&#x7684;&#x5B9E;&#x4F8B;&#x5316;&#x8FC7;&#x7A0B;&#x8FC7;&#x4E8E;&#x70E6;&#x7410;&#xFF0C;&#x901A;&#x8FC7;XML&#x914D;&#x7F6E;&#x8FC7;&#x4E8E;&#x590D;&#x6742;&#xFF0C;&#x4F7F;&#x6211;&#x4EEC;&#x5B81;&#x613F;&#x4F7F;&#x7528;Java&#x4EE3;&#x7801;&#x6765;&#x5B8C;&#x6210;&#x8FD9;&#x4E2A;&#x5B9E;&#x4F8B;&#x5316;&#x8FC7;&#x7A0B;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6216;&#x8005;&#xFF0C;&#x67D0;&#x4E9B;&#x7B2C;&#x4E09;&#x65B9;&#x5E93;&#x4E0D;&#x80FD;&#x76F4;&#x63A5;&#x6CE8;&#x518C;&#x5230;Spring&#x5BB9;&#x5668;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;<code>org.springframework, beans, factory. FactoryBean</code>&#x63A5;&#x53E3;&#xFF0C;&#x7ED9;&#x51FA;&#x81EA;&#x5DF1;&#x7684;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;&#x5316;&#x903B;&#x8F91;&#x4EE3;&#x7801;&#x3002;&#x5F53;&#x7136;&#xFF0C;&#x4E0D;&#x4F7F;&#x7528;FactoryBean,&#x800C;&#x50CF;&#x901A;&#x5E38;&#x90A3;&#x6837;&#x5B9E;&#x73B0;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x5DE5;&#x5382;&#x65B9;&#x6CD5;&#x7C7B;&#x4E5F;&#x662F;&#x53EF;&#x4EE5;&#x7684;&#x3002;&#x4E0D;&#x8FC7;&#xFF0C;FactoryBeann&#x53EF;&#x662F;Spring&#x63D0;&#x4F9B;&#x7684;&#x5BF9;&#x4ED8;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x7684;&#x201C;&#x5236;&#x5F0F;&#x88C5;&#x5907;&#x201D;&#x54E6;&#xFF01;</p>
+<pre class="language-"><code class="lang-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">FactoryBean</span> <span class="token punctuation">{</span>
+    <span class="token class-name">Object</span> <span class="token function">getObject</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throw</span> <span class="token class-name">Exception</span><span class="token punctuation">;</span>
+<span class="token class-name">Class</span> <span class="token function">getObjectType</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">boolean</span> <span class="token function">isSingleton</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<ul>
+<li>getObject()&#x65B9;&#x6CD5;&#x4F1A;&#x8FD4;&#x56DE;&#x8BE5;FactoryBean&#x751F;&#x4EA7;&quot;&#x7684;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5B9E;&#x73B0;&#x8BE5;&#x65B9;&#x6CD5;&#x4EE5;&#x7ED9;&#x51FA;&#x81EA;&#x5DF1; &#x7684;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;&#x5316;&#x903B;&#x8F91;&#xFF1B;</li>
+<li>getObjectType ()&#x65B9;&#x6CD5;&#x4EC5;&#x8FD4;&#x56DE;getObject ()&#x65B9;&#x6CD5;&#x6240;&#x8FD4;&#x56DE;&#x7684;&#x5BF9;&#x8C61;&#x7684;&#x7C7B;&#x578B;&#xFF0C;&#x5982;&#x679C;&#x9884;&#x5148;&#x65E0;&#x6CD5;&#x786E;&#x5B9A;&#xFF0C;&#x5219;&#x8FD4;&#x56DE;null;</li>
+<li>isSingletonO&#x65B9;&#x6CD5;&#x8FD4;&#x56DE;&#x7ED3;&#x679C;&#x7528;&#x4E8E;&#x8868;&#x660E;&#xFF0C;&#x5DE5;&#x5382;&#x65B9;&#x6CD5;(getObject ())&#x6240;&quot;&#x751F;&#x4EA7;&#x5572;&#x5BF9;&#x8C61;&#x662F;&#x5426;&#x8981;&#x4EE5;singleton&#x5F62;&#x5F0F;&#x5B58;&#x5728;&#x4E8E;&#x5BB9;&#x5668;&#x4E2D;&#x3002;&#x5982;&#x679C;&#x4EE5;singleton&#x5F62;&#x5F0F;&#x5B58;&#x5728;,&#x5219;&#x8FD4;&#x56DE;true,&#x5426;&#x5219;&#x8FD4;&#x56DE;false&#xFF1B;</li>
+</ul>
+<pre class="language-"><code class="lang-xml"><span class="token comment">&lt;!--&#x8981;&#x4F7F;&#x7528;&#x5B9E;&#x73B0;FactoryBean&#x7684;&#x7C7B;, &#x53EA;&#x9700;&#x8981;&#x5C06;&#x5176;&#x6CE8;&#x518C;&#x5230;&#x5BB9;&#x5668;&#x5373;&#x53EF;--&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>bean</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>mockBean<span class="token punctuation">&quot;</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>xx<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>bean</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+<p>FactoryBean&#x7C7B;&#x578B;&#x7684;bean&#x5B9A;&#x4E49;,&#x901A;&#x8FC7;&#x6B63;&#x5E38;&#x7684;id&#x5F15;&#x7528;,&#x7A97;&#x53E3;&#x8FD4;&#x56DE;&#x7684;&#x662F;FactoryBean&#x6240;&quot;&#x751F;&#x4EA7;&quot;&#x7684;&#x5BF9;&#x8C61;&#x7C7B;&#x578B;,&#x800C;&#x975E;FactoryBean&#x5B9E;&#x73B0;&#x672C;&#x8EAB;&#x3002;</p>
+<p>&#x200B;    &#x5982;&#x679C;&#x4E00;&#x5B9A;&#x8981;&#x53D6;&#x5F97;FactoryBean&#x672C;&#x8EAB;&#x7684;&#x8BDD;,&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5728;bean&#x5B9A;&#x4E49;&#x7684;id&#x4E4B;&#x524D;&#x52A0;&#x524D;&#x7F00;&amp;&#x6765;&#x8FBE;&#x5230;&#x76EE;&#x7684;&#x3002;Spring&#x5185;&#x90E8;&#x7684;&#x8BB8;&#x591A;&#x5730;&#x65B9;&#x90FD;&#x4F7F;&#x7528;&#x4E86;FactoryBean&#x3002;&#x5982;</p>
+<ul>
+<li>JndiObjectFactoryBean</li>
+<li>LocalSessionFactoryBean</li>
+<li>SqlMapClientFactoryBean</li>
+<li>ProxyFactoryBean</li>
+<li>TransactionProxyFactoryBean</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h4 id="437-&#x5077;&#x6881;&#x6362;&#x67F1;&#x4E4B;&#x672F;">4.3.7 &#x5077;&#x6881;&#x6362;&#x67F1;&#x4E4B;&#x672F;</h4>
+<p>Spring&#x7A97;&#x53E3;&#x8F83;&#x4E3A;&#x72EC;&#x7279;&#x7684;&#x529F;&#x80FD;&#x7279;&#x6027;:</p>
+<ul>
+<li><p>&#x65B9;&#x6CD5;&#x6CE8;&#x5165;(method injection)&#x3002;&#x53EA;&#x8981;&#x8BA9;getNewBean&#x65B9;&#x6CD5;&#x58F0;&#x660E;&#x7B26;&#x5408;&#x89C4;&#x5B9A;&#x7684;&#x683C;&#x5F0F;,&#x5E76;&#x5728;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E2D;&#x901A;&#x77E5;&#x7A97;&#x53E3;,&#x5F53;&#x8BE5;&#x65B9;&#x6CD5;&#x88AB;&#x8C03;&#x7528;&#x7684;&#x65F6;&#x5019;,&#x6BCF;&#x6B21;&#x8FD4;&#x56DE;&#x6307;&#x5B9A;&#x7C7B;&#x578B;&#x7684;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;&#x5373;&#x53EF;&#x3002;&#x8BE5;&#x65B9;&#x6CD5;&#x5FC5;&#x987B;&#x80FD;&#x591F;&#x88AB;&#x5B50;&#x7C7B;&#x5B9E;&#x73B0;&#x6216;&#x8005;&#x8986;&#x5199;,&#x56E0;&#x4E3A;&#x7A97;&#x53E3;&#x4F1A;&#x4E3A;&#x6211;&#x4EEC;&#x8981;&#x8FDB;&#x884C;&#x65B9;&#x6CD5;&#x6CE8;&#x5165;&#x7684;&#x5BF9;&#x8C61;&#x4F7F;&#x7528;Cglib&#x52A8;&#x6001;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x5B50;&#x7C7B;&#x5B9E;&#x73B0;,&#x4ECE;&#x800C;&#x66FF;&#x4EE3;&#x5F53;&#x524D;&#x5BF9;&#x8C61;&#x3002;</p>
+<pre class="language-"><code class="lang-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>bean</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>xx<span class="token punctuation">&quot;</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>xx<span class="token punctuation">&quot;</span></span> <span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>lookup-method</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>getNewsBean<span class="token punctuation">&quot;</span></span> <span class="token attr-name">bean</span> <span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>newBean<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>bean</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+<p>&#x901A;&#x8FC7;<lookup-method>&#x7684;name&#x5C5E;&#x6027;&#x6307;&#x5B9A;&#x9700;&#x8981;&#x6CE8;&#x5165;&#x7684;&#x65B9;&#x6CD5;&#x540D;,bean&#x5C5E;&#x6027;&#x6307;&#x5B9A;&#x9700;&#x8981;&#x6CE8;&#x5165;&#x7684;&#x5BF9;&#x8C61;,&#x5F53;getNewBean&#x65B9;&#x6CD5;&#x88AB;&#x8C03;&#x7528;&#x7684;&#x65F6;&#x5019;,&#x5BB9;&#x5668;&#x53EF;&#x4EE5;&#x6BCF;&#x6B21;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x7C7B;&#x578B;&#x5B9E;&#x4F8B;&#x3002;</lookup-method></p>
+<p>&#x25B3; &#x9664;&#x4E86;&#x4F7F;&#x7528;&#x65B9;&#x6CD5;&#x6CE8;&#x5165;&#x6765;&#x8FBE;&#x5230;&quot;&#x6BCF;&#x6B21;&#x8C03;&#x7528;&#x90FD;&#x8BA9;&#x5BB9;&#x5668;&#x8FD4;&#x56DE;&#x65B0;&#x7684;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;&quot;&#x7684;&#x76EE;&#x7684;,&#x8FD8;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4EE5;&#x4E0B;&#x4E24;&#x79CD;&#x65B9;&#x5F0F;:</p>
+<ul>
+<li><ol>
+<li>BeanFactoryAware&#x63A5;&#x53E3;&#x3002;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x662F;&#x6301;&#x6709;&#x4E00;&#x4E2A;BeanFactory&#x7684;&#x5F15;&#x7528;, &#x8FD9;&#x6837;&#x5C31;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4ECE;&#x5BB9;&#x5668;&#x5F53;&#x4E2D;&#x83B7;&#x53D6;&#x5B9E;&#x4F8B;&#x3002;</li>
+</ol>
+</li>
+<li><ol>
+<li>ObjectFactoryCreatingFactoryBean&#x3002;&#x8FD9;&#x4E2A;&#x7C7B;&#x662F;Spring&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A;FactoryBean&#x5B9E;&#x73B0;, &#x5B83;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;ObjectFactory&#x5B9E;&#x4F8B;&#x3002;&#x901A;&#x8FC7;&#x8FD9;&#x4E2A;&#x5B9E;&#x4F8B;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8FD4;&#x56DE;&#x5BB9;&#x5668;&#x7BA1;&#x7406;&#x7684;&#x76F8;&#x5173;&#x5BF9;&#x8C61;&#x3002;&#x5B9E;&#x9645;&#x4E0A;,&#x8FD9;&#x4E2A;Bean&#x5B9E;&#x73B0;&#x4E86;BeanFactoryFactoryAware&#x63A5;&#x53E3;,&#x5B83;&#x8FD4;&#x56DE;&#x7684;ObjectFActory&#x5B9E;&#x4F8B;&#x53EA;&#x662F;&#x7279;&#x5B9A;&#x4E8E;&#x4E0E;Spring&#x5BB9;&#x5668;&#x8FDB;&#x884C;&#x4EA4;&#x4E92;&#x7684;&#x4E00;&#x4E2A;&#x5B9E;&#x73B0;&#x800C;&#x5DF2;&#x3002;&#x4F7F;&#x7528;&#x5B83;&#x7684;&#x597D;&#x5904;&#x662F;, &#x9694;&#x79BB;&#x4E86;&#x5BA2;&#x6237;&#x7AEF;&#x5BF9;&#x8C61;&#x5BF9;BeanFactory&#x7684;&#x76F4;&#x63A5;&#x5F15;&#x7528;&#x3002;</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>&#x65B9;&#x6CD5;&#x66FF;&#x6362;(Method replacement)&#x3002;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x77E5;&#x9053;&#x5C31;&#x884C;&#x3002;&#x5B9E;&#x73B0;MethodReplacer&#x63A5;&#x53E3;&#x3002;&#x5728;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E2D;&#x6CE8;&#x5165;&#x5373;&#x53EF;&#x3002;</p>
+</li>
+</ul>
+<h3 id="44-&#x5BB9;&#x5668;&#x80CC;&#x540E;&#x7684;&#x79D8;&#x5BC6;">4.4 &#x5BB9;&#x5668;&#x80CC;&#x540E;&#x7684;&#x79D8;&#x5BC6;</h3>
+<h4 id="441-&#x6218;&#x7565;&#x6027;&#x89C2;&#x671B;">4.4.1 &#x6218;&#x7565;&#x6027;&#x89C2;&#x671B;</h4>
+<p>Spring&#x7684;IoC&#x5BB9;&#x5668;&#x5728;&#x5B9E;&#x73B0;&#x7684;&#x65F6;&#x5019;,&#x57FA;&#x672C;&#x4E0A;&#x53EF;&#x4EE5;&#x5212;&#x5206;&#x4E3A;&#x4E24;&#x4E2A;&#x9636;&#x6BB5;:</p>
+<ul>
+<li>&#x5BB9;&#x5668;&#x542F;&#x52A8;&#x9636;&#x6BB5;</li>
+<li>Bean&#x5B9E;&#x4F8B;&#x5316;&#x9636;&#x6BB5;</li>
+</ul>
+<p>Spring&#x5728;&#x5B9E;&#x73B0;&#x7684;&#x65F6;&#x5019;&#x6839;&#x636E;&#x73B0;&#x9636;&#x6BB5;&#x7684;&#x4E0D;&#x540C;&#x7279;&#x70B9;,&#x5728;&#x6BCF;&#x4E2A;&#x9636;&#x6BB5;&#x90FD;&#x52A0;&#x5165;&#x4E86;&#x76F8;&#x5E94;&#x7684;&#x5BB9;&#x5668;&#x6269;&#x5C55;&#x70B9;,&#x4EE5;&#x4FBF;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x5177;&#x4F53;&#x573A;&#x666F;&#x7684;&#x9700;&#x8981;&#x52A0;&#x5165;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x6269;&#x5C55;&#x903B;&#x8F91;&#x3002;</p>
+<p><a href="https://cdn.jsdelivr.net/gh/Clarencezero/poi/1552290794731.png" data-lightbox="8e2425df-1638-4625-a4a6-817ef30fd74e" data-title="1552290794731" target="_blank"><img src="https://cdn.jsdelivr.net/gh/Clarencezero/poi/1552290794731.png" alt="1552290794731"></a></p>
+<ol>
+<li><p>&#x5BB9;&#x5668;&#x542F;&#x52A8;&#x9636;&#x6BB5;</p>
+<p>&#x9996;&#x5148;&#x901A;&#x8FC7;&#x67D0;&#x79CD;&#x9014;&#x5F84;&#x52A0;&#x8F7D;Configuration MetaData&#x3002;&#x5728;&#x5927;&#x90E8;&#x5206;&#x60C5;&#x51B5;&#x4E0B;,&#x5BB9;&#x5668;&#x9700;&#x8981;&#x4F9D;&#x8D56;&#x67D0;&#x4E9B;&#x5DE5;&#x5177;&#x7C7B;(BeanDefinitionReader)&#x5BF9;&#x52A0;&#x8F7D;&#x7684;Configuration MetaData&#x8FDB;&#x884C;&#x89E3;&#x6790;&#x548C;&#x5206;&#x6790;,&#x5E76;&#x5C06;&#x5206;&#x6790;&#x540E;&#x7684;&#x4FE1;&#x606F;&#x7F16;&#x7EC4;&#x4E3A;&#x76F8;&#x5E94; &#x7684;BeanDefinition,&#x6700;&#x540E;&#x628A;&#x8FD9;&#x4E9B;&#x4FDD;&#x5B58;&#x4E86;bean&#x5B9A;&#x4E49;&#x5FC5;&#x8981;&#x4FE1;&#x606F;&#x7684;BeanDefinition,&#x6CE8;&#x518C;&#x5230;&#x76F8;&#x5E94;&#x7684;BeanDefinitionRegistry,&#x8FD9;&#x6837;&#x5BB9;&#x5668;&#x542F;&#x52A8;&#x5DE5;&#x4F5C;&#x5C31;&#x5B8C;&#x6210;&#x4E86;&#x3002;&#x603B;&#x7684;&#x6765;&#x8BF4;, &#x8BE5;&#x9636;&#x6BB5;&#x5DE5;&#x4F5C;&#x53EF;&#x4EE5;&#x8BA4;&#x4E3A;&#x662F;&#x51C6;&#x5907;&#x6027;&#x7684;,&#x91CD;&#x70B9;&#x66F4;&#x52A0;&#x4FA7;&#x91CD;&#x4E8E;&#x5BF9;&#x8C61;&#x7BA1;&#x7406;&#x4FE1;&#x606F;&#x7684;&#x6536;&#x96C6;&#x3002;&#x5F53;&#x7136;,&#x4E00;&#x4E9B;&#x9A8C;&#x8BC1;&#x6027;&#x6216;&#x8005;&#x8F85;&#x52A9;&#x6027;&#x7684;&#x5DE5;&#x4F5C;&#x4E5F;&#x53EF;&#x4EE5;&#x5728;&#x8FD9;&#x4E2A;&#x9636;&#x6BB5;&#x5B8C;&#x6210;&#x3002;</p>
+</li>
+<li><p>Bean&#x5B9E;&#x4F8B;&#x5316;&#x9636;&#x6BB5;</p>
+<p>&#x5F53;&#x67D0;&#x4E2A;&#x8BF7;&#x6C42;&#x65B9;&#x901A;&#x8FC7;&#x5BB9;&#x5668;&#x7684;<code>getBean</code>&#x65B9;&#x6CD5;&#x660E;&#x786E;&#x5730;&#x8BF7;&#x6C42;&#x67D0;&#x4E2A;&#x5BF9;&#x8C61;,&#x6216;&#x8005;&#x56E0;&#x4F9D;&#x8D56;&#x5173;&#x7CFB;&#x5BB9;&#x5668;&#x9700;&#x8981;&#x9690;&#x5F0F;&#x5730;&#x8C03;&#x7528;<code>getBean</code>&#x65B9;&#x6CD5;&#x65F6;,&#x5C31;&#x4F1A;&#x89E6;&#x53D1;&#x7B2C;&#x4E8C;&#x9636;&#x6BB5;&#x7684;&#x6D3B;&#x52A8;&#x3002;</p>
+</li>
+</ol>
+<h4 id="442-&#x63D2;&#x624B;&#x5BB9;&#x5668;&#x7684;&#x542F;&#x52A8;">4.4.2 &#x63D2;&#x624B;&quot;&#x5BB9;&#x5668;&#x7684;&#x542F;&#x52A8;&quot;</h4>
+<p>Spring&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x79CD;&#x53EB;&#x505A;<code>BeanFactoryPostProcessor</code>&#x7684;&#x5BB9;&#x5668;&#x6269;&#x5C55;&#x673A;&#x5236;&#x3002;&#x8BE5;&#x673A;&#x5236;&#x5141;&#x8BB8;&#x6211;&#x4EEC;&#x5728;&#x5BB9;&#x5668;&#x5B9E;&#x4F8B;&#x5316;&#x76F8;&#x5E94;&#x5BF9;&#x8C61;&#x4E4B;&#x524D;,&#x5BF9;&#x6CE8;&#x518C;&#x5230;&#x5BB9;&#x5668;&#x7684;BeanDefinition&#x6240;&#x4FDD;&#x5B58;&#x7684;&#x4FE1;&#x606F;&#x505A;&#x76F8;&#x5E94;&#x7684;&#x4FEE;&#x6539;&#x3002;&#x8FD9;&#x5C31;&#x76F8;&#x5F53;&#x4E8E;&#x5728;&#x5BB9;&#x5668;&#x5B9E;&#x73B0;&#x7684;&#x7B2C;&#x4E00;&#x9636;&#x6BB5;&#x6700;&#x540E;&#x52A0;&#x5165;&#x4E00;&#x9053;&#x5DE5;&#x5E8F;,&#x8BA9;&#x6211;&#x4EEC;&#x5BF9;&#x6700;&#x7EC8;&#x7684;BeanDefinition&#x505A;&#x4E00;&#x4E9B;&#x989D;&#x5916;&#x7684;&#x64CD;&#x4F5C;,&#x6BD4;&#x5982;&#x4FEE;&#x6539;&#x5176;&#x4E2D;bean&#x5B9A;&#x4E49;&#x7684;&#x67D0;&#x79CD;&#x5C5E;&#x6027;,&#x4E3A;bean&#x5B9A;&#x4E49;&#x589E;&#x52A0;&#x5176;&#x4ED6;&#x4FE1;&#x606F;&#x7B49;&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x5F88;&#x5C11;&#x53BB;&#x76F4;&#x63A5;&#x5B9E;&#x73B0;BeanFactoryPostProcessor&#x63A5;&#x53E3;&#x3002;&#x5176;&#x4E2D;&#xFF0C;<code>org.springframework.beans. 
+factory.config.PropertyPlaceholderConfigure</code>r&#x548C;<code>org.springframework.beans.factory. 
+config.Property OverrideConfigurer</code>&#x662F;&#x4E24;&#x4E2A;&#x6BD4;&#x8F83;&#x5E38;&#x7528;&#x7684;BeanFactoryPostProcessor&#x3002;&#x53E6;&#x5916;&#xFF0C;&#x4E3A;
+&#x4E86;&#x5904;&#x7406;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E2D;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x4E0E;&#x771F;&#x6B63;&#x7684;&#x4E1A;&#x52A1;&#x5BF9;&#x8C61;&#x6240;&#x5B9A;&#x4E49;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x8F6C;&#x6362;&#xFF0C;Spring&#x8FD8;&#x5141;&#x8BB8;&#x6211;&#x4EEC;&#x901A;&#x8FC7;
+org.springframework.beans.factory.config.CustomEditorConfigurer&#x6765;&#x6CE8;&#x518C;&#x81EA;&#x5B9A;&#x4E49;&#x7684;PropertyEditor&#x4EE5;&#x8865;&#x52A9;&#x5BB9;&#x5668;&#x4E2D;&#x9ED8;&#x8BA4;&#x7684;PropertyEditor&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#x6765;&#x5E94;&#x7528;<code>BeanFactoryPostProcessor</code>,&#x5206;&#x522B;&#x9488;&#x5BF9;&#x57FA;&#x672C;&#x7684; IoC &#x5BB9; &#x5668;
+BeanFactory&#x548C;&#x8F83;&#x4E3A;&#x5148;&#x8FDB;&#x7684;&#x5BB9;&#x5668;ApplicationContext&#x3002;</p>
+<p><code>BeanFactoryPostProcessor</code>&#x5B9E;&#x73B0;&#x53EF;&#x4EE5;&#x5B8C;&#x6210;&#x7684;&#x529F;&#x80FD;:</p>
+<ul>
+<li><ol>
+<li><p>PropertyPlaceholderConfigurer</p>
+<p>&#x901A;&#x5E38;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x6211;&#x4EEC;&#x4E0D;&#x60F3;&#x5C06;&#x7C7B;&#x4F3C;&#x4E8E;&#x7CFB;&#x7EDF;&#x7BA1;&#x7406;&#x76F8;&#x5173;&#x7684;&#x4FE1;&#x606F;&#x540C;&#x4E1A;&#x52A1;&#x5BF9;&#x8C61;&#x76F8;&#x5173;&#x7684;&#x914D;&#x7F6E;&#x4FE1;&#x606F;&#x6DF7;&#x6742;&#x5230;XML&#x914D;&#x7F6E;
+&#x6587;&#x4EF6;&#x4E2D;&#xFF0C;&#x4EE5;&#x514D;&#x90E8;&#x7F72;&#x6216;&#x8005;&#x7EF4;&#x62A4;&#x671F;&#x95F4;&#x56E0;&#x4E3A;&#x6539;&#x52A8;&#x7E41;&#x6742;&#x7684;XML&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x800C;&#x51FA;&#x73B0;&#x95EE;&#x9898;&#x3002;&#x6211;&#x4EEC;&#x4F1A;&#x5C06;&#x4E00;&#x4E9B;&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;
+&#x4FE1;&#x606F;&#x3001;&#x90AE;&#x4EF6;&#x670D;&#x52A1;&#x5668;&#x7B49;&#x76F8;&#x5173;&#x4FE1;&#x606F;&#x5355;&#x72EC;&#x914D;&#x7F6E;&#x5230;&#x4E00;&#x4E2A;properties&#x6587;&#x4EF6;&#x4E2D;&#xFF0C;&#x8FD9;&#x6837;&#xFF0C;&#x5982;&#x679C;&#x56E0;&#x7CFB;&#x7EDF;&#x8D44;&#x6E90;&#x53D8;&#x52A8;&#x7684;&#x8BDD;&#xFF0C;&#x53EA;
+&#x9700;&#x8981;&#x5173;&#x6CE8;&#x8FD9;&#x4E9B;&#x7B80;&#x5355;properties&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x5373;&#x53EF;&#x3002;</p>
+<p>PropertyPlaceholderConfigurer&#x5141;&#x8BB8;&#x6211;&#x4EEC;&#x5728;XML&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E2D;&#x4F7F;&#x7528;&#x5360;&#x4F4D;&#x7B26;&#xFF08;PlaceHolder&#xFF09;,&#x5E76;&#x5C06;&#x8FD9;&#x4E9B;&#x5360;&#x4F4D;&#x7B26;&#x6240;&#x4EE3;&#x8868;&#x7684;&#x8D44;&#x6E90;&#x5355;&#x72EC;&#x914D;&#x7F6E;&#x5230;&#x7B80;&#x5355;&#x7684;properties&#x6587;&#x4EF6;&#x4E2D;&#x6765;&#x52A0;&#x8F7D;&#x3002;</p>
+<p>&#x5F53;BeanFactory&#x5728;&#x7B2C;&#x4E00;&#x9636;&#x6BB5;&#x52A0;&#x8F7D;&#x5B8C;&#x6210;&#x6240;&#x6709;&#x914D;&#x7F6E;&#x4FE1;&#x606F;&#x65F6;&#xFF0C;BeanFactory&#x4E2D;&#x4FDD;&#x5B58;&#x7684;&#x5BF9;&#x8C61;&#x7684;&#x5C5E;&#x6027;&#x4FE1;&#x606F;&#x8FD8;&#x53EA;&#x662F;&#x4EE5;&#x5360;&#x4F4D;&#x7B26;&#x7684;&#x5F62;&#x5F0F;&#x5B58;&#x5728;&#xFF0C;&#x5982;${jdbc.url}&#x3001;${jdbc.driver}&#x3002;&#x5F53;
+PropertyPlaceholderConfigurer&#x4F5C;&#x4E3A;BeanFactoryPostProcessor&#x88AB;&#x5E94;&#x7528;&#x65F6;&#xFF0C;&#x5B83;&#x4F1A;&#x4F7F;&#x7528;properties
+&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E2D;&#x7684;&#x914D;&#x7F6E;&#x4FE1;&#x606F;&#x6765;&#x66FF;&#x6362;&#x76F8;&#x5E94;BeanDefinition&#x4E2D;&#x5360;&#x4F4D;&#x7B26;&#x6240;&#x8868;&#x793A;&#x7684;&#x5C5E;&#x6027;&#x503C;&#x3002;&#x8FD9;&#x6837;&#xFF0C;&#x5F53;&#x8FDB;&#x5165;&#x5BB9;&#x5668;&#x5B9E;
+&#x73B0;&#x7684;&#x7B2C;&#x4E8C;&#x9636;&#x6BB5;&#x5B9E;&#x4F8B;&#x5316;bean&#x65F6;&#xFF0C;bean&#x5B9A;&#x4E49;&#x4E2D;&#x7684;&#x5C5E;&#x6027;&#x503C;&#x5C31;&#x662F;&#x6700;&#x7EC8;&#x66FF;&#x6362;&#x5B8C;&#x6210;&#x7684;&#x4E86;&#x3002;</p>
+<p>&#x8FD9;&#x4E2A;&#x7C7B;&#x4E0D;&#x5355;&#x4ECE;&#x914D;&#x7F6E;properties&#x6587;&#x4EF6;&#x4E2D;&#x52A0;&#x8F7D;&#x914D;&#x7F6E;&#x9879;,&#x540C;&#x65F6;&#x8FD8;&#x4F1A;&#x68C0;&#x67E5;Java&#x7684;System&#x7C7B;&#x4E2D;&#x7684;properties&#x3002;</p>
+</li>
+</ol>
+</li>
+<li><ol>
+<li>PropertyOverrideConfigurer</li>
+</ol>
+</li>
+<li><ol>
+<li><p>CustomEditorConfigurer</p>
+<ul>
+<li><p>&#x81EA;&#x5B9A;&#x4E49;PropertyEditor</p>
+<p>&#x901A;&#x5E38;&#x60C5;&#x51B5;&#x4E0B;,&#x5BF9;&#x4E8E;Date&#x7C7B;&#x578B;,&#x4E0D;&#x540C;&#x7684;Locale&#x3001;&#x4E0D;&#x540C;&#x7684;&#x7CFB;&#x7EDF;&#x5728;&#x8868;&#x73B0;&#x5F62;&#x5F0F;&#x4E0A;&#x5B58;&#x5728;&#x4E0D;&#x540C;&#x7684;&#x9700;&#x6C42;&#x3002;&#x5C31;&#x597D;&#x50CF;&#x8FD9;&#x6B21;&#xFF0C;&#x6211;&#x4EEC;&#x4EC5;
+&#x4EC5; &#x8BA9; DatePropertyEditor &#x5B8C;&#x6210;&#x4ECE; String &#x5230; java.util.Date &#x7684;&#x8F6C;&#x6362;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x5B9E;&#x73B0;
+setAsText(String)&#x65B9;&#x6CD5;&#xFF0C;&#x800C;&#x5176;&#x4ED6;&#x65B9;&#x6CD5;&#x4E00;&#x6982;&#x4E0D;&#x7BA1;&#x3002;</p>
+<p><a href="https://cdn.jsdelivr.net/gh/Clarencezero/poi/1552442748489.png" data-lightbox="14ba78bc-c500-4fd2-9ef0-7ec773a3f981" data-title="1552442748489" target="_blank"><img src="https://cdn.jsdelivr.net/gh/Clarencezero/poi/1552442748489.png" alt="1552442748489"></a></p>
+<p>&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5C06;&#x521A;&#x5B9E;&#x73B0;&#x7684;DatePropertyEditor&#x6CE8;&#x518C;&#x5230;&#x5BB9;&#x5668;&#xFF0C;&#x4EE5;&#x544A;&#x77E5;&#x5BB9;&#x5668;&#x6309;&#x7167;DatePropertyEditor&#x7684;&#x5F62;&#x5F0F;&#x8FDB;&#x884C;String&#x5230;java.util.Date&#x7C7B;&#x578B;&#x7684;&#x8F6C;&#x6362;&#x5DE5;&#x4F5C;&#x3002;</p>
+<pre class="language-"><code class="lang-java"><span class="token class-name">XmlBeanFactory</span> beanFactory <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">XmlBeanFactory</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">ClassPathResource</span><span class="token punctuation">(</span><span class="token string">&quot;...&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">CustomEditorConfigurer</span> ceConfigurer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">CustomEditorConfigurer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+<span class="token class-name">Map</span> customEditors <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">CustomerEditors</span><span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>java<span class="token punctuation">.</span>util<span class="token punctuation">.</span><span class="token class-name">Date</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">DatePropertyEditor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ceConfigurer<span class="token punctuation">.</span><span class="token function">setCustomEditors</span><span class="token punctuation">(</span>customerEditors<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ceConfigurer<span class="token punctuation">.</span><span class="token function">postProcessBeanFactory</span><span class="token punctuation">(</span>beanFactory<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h4 id="443-&#x4E86;&#x89E3;bean&#x7684;&#x4E00;&#x751F;">4.4.3 &#x4E86;&#x89E3;bean&#x7684;&#x4E00;&#x751F;</h4>
+<p>&#x53EA;&#x6709;&#x5F53;&#x8BF7;&#x6C42;&#x65B9;&#x901A;&#x8FC7;BeanFactory&#x7684;getBean()&#x65B9;&#x6CD5;&#x6765;&#x8BF7;&#x6C42;&#x67D0;&#x4E2A;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;&#x7684;&#x65F6;&#x5019;,&#x624D;&#x6709;&#x53EF;&#x80FD;&#x89E6;&#x53D1;bean&#x5B9E;&#x4F8B;&#x5316;&#x9636;&#x6BB5;&#x7684;&#x6D3B;&#x52A8;&#x3002;BeanFactory&#x7684;getBean&#x65B9;&#x6CD5;&#x53EF;&#x80FD;&#x88AB;&#x5BA2;&#x6237;&#x7AEF;&#x5BF9;&#x8C61;&#x8C03;&#x7528;,&#x4E5F;&#x53EF;&#x4EE5;&#x5728;&#x5BB9;&#x5668;&#x5185;&#x90E8;&#x9690;&#x5F0F;&#x5730;&#x88AB;&#x8C03;&#x7528;&#x3002;</p>
+<ul>
+<li>&#x5BF9;&#x4E8E;BeanFactory&#x6765;&#x8BF4;&#xFF0C;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;&#x5316;&#x9ED8;&#x8BA4;&#x91C7;&#x7528;&#x5EF6;&#x8FDF;&#x521D;&#x59CB;&#x5316;&#x3002;</li>
+<li>ApplicationContext&#x542F;&#x52A8;&#x4E4B;&#x540E;&#x4F1A;&#x5B9E;&#x4F8B;&#x5316;&#x6240;&#x6709;&#x7684;bean&#x5B9A;&#x4E49;&#x3002;</li>
+</ul>
+<p><a href="https://cdn.jsdelivr.net/gh/Clarencezero/poi/1552444157113.png" data-lightbox="78b38442-137d-4705-9ed4-7efaf1ab94db" data-title="1552444157113" target="_blank"><img src="https://cdn.jsdelivr.net/gh/Clarencezero/poi/1552444157113.png" alt="1552444157113"></a></p>
+<ol>
+<li><p>Bean&#x7684;&#x5B9E;&#x4F8B;&#x5316;&#x4E0E;BeanWrapper</p>
+<p>&#x5BB9;&#x5668;&#x5728;&#x5185;&#x90E8;&#x5B9E;&#x73B0;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x91C7;&#x7528;&#x201C;&#x7B56;&#x7565;&#x6A21;&#x5F0F;&#xFF08;Strategy Pattern&#xFF09;&#x201D;&#x6765;&#x51B3;&#x5B9A;&#x91C7;&#x7528;&#x4F55;&#x79CD;&#x65B9;&#x5F0F;&#x521D;&#x59CB;&#x5316;bean&#x5B9E;&#x4F8B;&#x3002;InstantiationStrategy&#x5B9A;&#x4E49;&#x662F;&#x5B9E;&#x4F8B;&#x5316;&#x7B56;&#x7565;
+&#x7684;&#x62BD;&#x8C61;&#x63A5;&#x53E3;&#xFF0C;&#x5176;&#x76F4;&#x63A5;&#x5B50;&#x7C7B;SimpleInstantiationStrategy&#x5B9E;&#x73B0;&#x4E86;&#x7B80;&#x5355;&#x7684;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;&#x5316;&#x529F;&#x80FD;&#xFF0C;CglibSubclassingInstantiation&#xFFFE;Strategy&#x7EE7;&#x627F;&#x4E86;SimpleInstantiationStrategy&#x7684;&#x4EE5;&#x53CD;&#x5C04;&#x65B9;&#x5F0F;&#x5B9E;&#x4F8B;&#x5316;&#x5BF9;&#x8C61;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x5E76;&#x4E14;&#x901A;&#x8FC7;CGLIB
+&#x7684;&#x52A8;&#x6001;&#x5B57;&#x8282;&#x7801;&#x751F;&#x6210;&#x529F;&#x80FD;&#xFF0C;&#x8BE5;&#x7B56;&#x7565;&#x5B9E;&#x73B0;&#x7C7B;&#x53EF;&#x4EE5;&#x52A8;&#x6001;&#x751F;&#x6210;&#x67D0;&#x4E2A;&#x7C7B;&#x7684;&#x5B50;&#x7C7B;&#xFF0C;&#x8FDB;&#x800C;&#x6EE1;&#x8DB3;&#x4E86;&#x65B9;&#x6CD5;&#x6CE8;&#x5165;&#x6240;&#x9700;&#x7684;&#x5BF9;&#x8C61;
+&#x5B9E;&#x4F8B;&#x5316;&#x9700;&#x6C42;&#x3002;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5BB9;&#x5668;&#x5185;&#x90E8;&#x91C7;&#x7528;&#x7684;&#x662F;CglibSubclassingInstantiationStrategy&#x3002;</p>
+<p>&#x4F46;&#x662F;&#xFF0C;&#x8FD4;&#x56DE;&#x65B9;
+&#x5F0F;&#x4E0A;&#x6709;&#x4E9B;&#x201C;&#x70B9;&#x7F00;&#x201D;&#x3002;&#x4E0D;&#x662F;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;&#x6784;&#x9020;&#x5B8C;&#x6210;&#x7684;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;&#xFF0C;&#x800C;&#x662F;&#x4EE5;BeanWrapper&#x5BF9;&#x6784;&#x9020;&#x5B8C;&#x6210;&#x7684;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;
+&#x8FDB;&#x884C;&#x5305;&#x88F9;&#xFF0C;&#x8FD4;&#x56DE;&#x76F8;&#x5E94;&#x7684;BeanWrapper&#x5B9E;&#x4F8B;&#x3002;</p>
+<p>BeanWrapper&#x63A5;&#x53E3;&#x901A;&#x5E38;&#x5728;Spring&#x6846;&#x67B6;&#x5185;&#x90E8;&#x4F7F;&#x7528;&#x3002;</p>
+</li>
+<li><p>&#x5404;&#x8272;&#x7684;Aware&#x63A5;&#x53E3;</p>
+<p>&#x5F53;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;&#x5316;&#x5B8C;&#x6210;&#x5E76;&#x4E14;&#x76F8;&#x5173;&#x5C5E;&#x6027;&#x4EE5;&#x53CA;&#x4F9D;&#x8D56;&#x8BBE;&#x7F6E;&#x5B8C;&#x6210;&#x4E4B;&#x540E;&#xFF0C;Spring&#x5BB9;&#x5668;&#x4F1A;&#x68C0;&#x67E5;&#x5F53;&#x524D;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;&#x662F;&#x5426;&#x5B9E;
+&#x73B0;&#x4E86;&#x4E00;&#x7CFB;&#x5217;&#x7684;&#x4EE5;Aware&#x547D;&#x540D;&#x7ED3;&#x5C3E;&#x7684;&#x63A5;&#x53E3;&#x5B9A;&#x4E49;&#x3002;&#x5982;&#x679C;&#x662F;,&#x5219;&#x5C06;&#x8FD9;&#x4E9B;Aware&#x63A5;&#x53E3;&#x5B9A;&#x4E49;&#x4E2D;&#x89C4;&#x5B9A;&#x7684;&#x4F9D;&#x8D56;&#x6CE8;&#x5165;&#x7ED9;&#x5F53;&#x524D;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;&#x3002;</p>
+<p>&#x8FD9;&#x4E9B;&#x63A5;&#x53E3;&#x5206;&#x4E3A;&#x5982;&#x4E0B;&#x51E0;&#x4E2A;:</p>
+<ul>
+<li>BeanNameAware&#x3002;&#x5982;&#x679C;Spring&#x5BB9;&#x5668;&#x68C0;&#x6D4B;&#x5230;&#x5F53;&#x524D;&#x5BF9;&#x8C61;&#x5B9E;
+&#x4F8B;&#x5B9E;&#x73B0;&#x4E86;&#x8BE5;&#x63A5;&#x53E3;&#xFF0C;&#x4F1A;&#x5C06;&#x8BE5;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;&#x7684;bean&#x5B9A;&#x4E49;&#x5BF9;&#x5E94;&#x7684;beanName&#x8BBE;&#x7F6E;&#x5230;&#x5F53;&#x524D;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;&#x3002;</li>
+<li>BeanClassLoaderAware&#x3002;&#x5982;&#x679C;&#x5BB9;&#x5668;&#x68C0;&#x6D4B;&#x5230;&#x5F53;&#x524D;&#x5BF9;
+&#x8C61;&#x5B9E;&#x4F8B;&#x5B9E;&#x73B0;&#x4E86;&#x8BE5;&#x63A5;&#x53E3;&#xFF0C;&#x4F1A;&#x5C06;&#x5BF9;&#x5E94;&#x52A0;&#x8F7D;&#x5F53;&#x524D;bean&#x7684;Classloader&#x6CE8;&#x5165;&#x5F53;&#x524D;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;&#x3002;&#x9ED8;&#x8BA4;&#x4F1A;&#x4F7F;&#x7528;
+&#x52A0;&#x8F7D;org.springframework.util.ClassUtils&#x7C7B;&#x7684;Classloader&#x3002;</li>
+<li>BeanFactoryAware&#x3002;&#x5728;&#x4ECB;&#x7ECD;&#x65B9;&#x6CD5;&#x6CE8;&#x5165;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6211;&#x4EEC;
+&#x63D0;&#x5230;&#x8FC7;&#x4F7F;&#x7528;&#x8BE5;&#x63A5;&#x53E3;&#x4EE5;&#x4FBF;&#x6BCF;&#x6B21;&#x83B7;&#x53D6;prototype&#x7C7B;&#x578B;bean&#x7684;&#x4E0D;&#x540C;&#x5B9E;&#x4F8B;&#x3002;&#x5982;&#x679C;&#x5BF9;&#x8C61;&#x58F0;&#x660E;&#x5B9E;&#x73B0;&#x4E86;
+BeanFactoryAware&#x63A5;&#x53E3;&#xFF0C;BeanFactory&#x5BB9;&#x5668;&#x4F1A;&#x5C06;&#x81EA;&#x8EAB;&#x8BBE;&#x7F6E;&#x5230;&#x5F53;&#x524D;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;&#x3002;&#x8FD9;&#x6837;&#xFF0C;&#x5F53;&#x524D;&#x5BF9;&#x8C61;
+&#x5B9E;&#x4F8B;&#x5C31;&#x62E5;&#x6709;&#x4E86;&#x4E00;&#x4E2A;BeanFactory&#x5BB9;&#x5668;&#x7684;&#x5F15;&#x7528;&#xFF0C;&#x5E76;&#x4E14;&#x53EF;&#x4EE5;&#x5BF9;&#x8FD9;&#x4E2A;&#x5BB9;&#x5668;&#x5185;&#x5141;&#x8BB8;&#x8BBF;&#x95EE;&#x7684;&#x5BF9;&#x8C61;&#x6309;&#x7167;&#x9700;&#x8981;
+&#x8FDB;&#x884C;&#x8BBF;&#x95EE;&#x3002;</li>
+</ul>
+<p>&#x8FD9;&#x51E0;&#x4E2A;&#x63A5;&#x53E3;&#x53EA;&#x9488;&#x5BF9;BeanFactory&#x7C7B;&#x578B;&#x7684;&#x5BB9;&#x5668;&#x800C;&#x8A00;,&#x5BF9;&#x4E8E;ApplicationContext&#x7C7B;&#x578B;&#x7684;&#x5BB9;&#x5668;,&#x4E5F;&#x5B58;&#x5728;&#x51E0;&#x4E2A;Aware&#x76F8;&#x5173;&#x7684;&#x63A5;&#x53E3;&#x3002;&#x4E0D;&#x8FC7;&#x5728;&#x68C0;&#x6D4B;&#x8FD9;&#x4E9B;&#x63A5;&#x53E3;&#x5E76;&#x8BBE;&#x7F6E;&#x76F8;&#x5173;&#x4F9D;&#x8D56;&#x7684;&#x5B9E;&#x73B0;&#x673A;&#x7406;&#x4E0A;,&#x4E0E;&#x4EE5;&#x4E0A;&#x51E0;&#x4E2A;&#x63A5;&#x53E3;&#x5904;&#x7406;&#x65B9;&#x5F0F;&#x6709;&#x6240;&#x4E0D;&#x540C;,&#x4F7F;&#x7528;&#x7684;&#x662F;BeanPostProcessor&#x65B9;&#x5F0F;&#x3002;</p>
+<ul>
+<li>ResourceLoaderAware &#x3002; ApplicationContext &#x5B9E;&#x73B0;&#x4E86;
+Spring&#x7684;ResourceLoader&#x63A5;&#x53E3;&#xFF08;&#x540E;&#x9762;&#x4F1A;&#x63D0;&#x53CA;&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;&#xFF09;&#x3002;&#x5F53;&#x5BB9;&#x5668;&#x68C0;&#x6D4B;&#x5230;&#x5F53;&#x524D;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;&#x5B9E;&#x73B0;&#x4E86;ResourceLoaderAware&#x63A5;&#x53E3;&#x4E4B;&#x540E;&#xFF0C;&#x4F1A;&#x5C06;&#x5F53;&#x524D;ApplicationContext&#x81EA;&#x8EAB;&#x8BBE;&#x7F6E;&#x5230;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;&#xFF0C;&#x8FD9;&#x6837;&#x5F53;&#x524D;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;&#x5C31;&#x62E5;&#x6709;&#x4E86;&#x5176;&#x6240;&#x5728;ApplicationContext&#x5BB9;&#x5668;&#x7684;&#x4E00;&#x4E2A;&#x5F15;&#x7528;&#x3002;</li>
+<li>ApplicationEventPublisherAware&#x3002;ApplicationContext
+&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x5BB9;&#x5668;&#xFF0C;&#x540C;&#x65F6;&#x8FD8;&#x5B9E;&#x73B0;&#x4E86;ApplicationEventPublisher&#x63A5;&#x53E3;&#xFF0C;&#x8FD9;&#x6837;&#xFF0C;&#x5B83;&#x5C31;&#x53EF;&#x4EE5;&#x4F5C;&#x4E3A;ApplicationEventPublisher&#x6765;&#x4F7F;&#x7528;&#x3002;&#x6240;&#x4EE5;&#xFF0C;&#x5F53;&#x524D;ApplicationContext&#x5BB9;&#x5668;&#x5982;&#x679C;&#x68C0;&#x6D4B;&#x5230;&#x5F53;&#x524D;&#x5B9E;&#x4F8B;
+&#x5316;&#x7684;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;&#x58F0;&#x660E;&#x4E86;ApplicationEventPublisherAware&#x63A5;&#x53E3;&#xFF0C;&#x5219;&#x4F1A;&#x5C06;&#x81EA;&#x8EAB;&#x6CE8;&#x5165;&#x5F53;&#x524D;&#x5BF9;&#x8C61;&#x3002;</li>
+<li>MessageSourceAware&#x3002;ApplicationContext&#x901A;&#x8FC7;Message&#xFFFE;Source&#x63A5;&#x53E3;&#x63D0;&#x4F9B;&#x56FD;&#x9645;&#x5316;&#x7684;&#x4FE1;&#x606F;&#x652F;&#x6301;&#xFF0C;&#x5373;I18n&#xFF08;Internationalization&#xFF09;&#x3002;&#x5B83;&#x81EA;&#x8EAB;&#x5C31;&#x5B9E;&#x73B0;&#x4E86;Message&#xFFFE;Source&#x63A5;&#x53E3;&#xFF0C;&#x6240;&#x4EE5;&#x5F53;&#x68C0;&#x6D4B;&#x5230;&#x5F53;&#x524D;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;&#x5B9E;&#x73B0;&#x4E86;MessageSourceAware&#x63A5;&#x53E3;&#xFF0C;&#x5219;&#x4F1A;&#x5C06;&#x81EA;&#x8EAB;&#x6CE8;&#x5165;&#x5F53;&#x524D;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;&#x3002;</li>
+<li>ApplicationContextAware&#x3002; &#x5982;&#x679C;ApplicationContext
+&#x5BB9;&#x5668;&#x68C0;&#x6D4B;&#x5230;&#x5F53;&#x524D;&#x5BF9;&#x8C61;&#x5B9E;&#x73B0;&#x4E86;ApplicationContextAware&#x63A5;&#x53E3;&#xFF0C;&#x5219;&#x4F1A;&#x5C06;&#x81EA;&#x8EAB;&#x6CE8;&#x5165;&#x5F53;&#x524D;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;&#x3002;</li>
+</ul>
+</li>
+<li><p>BeanPostProcessor</p>
+<p>BeanPostProcessor&#x7684;&#x6982;&#x5FF5;&#x5BB9;&#x6613;&#x4E0E;BeanFactoryPostProcessor&#x7684;&#x6982;&#x5FF5;&#x6DF7;&#x6DC6;&#x3002;&#x4F46;&#x53EA;&#x8981;&#x8BB0;&#x4F4F;BeanPostProcessor&#x662F;&#x5B58;&#x5728;&#x4E8E;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;&#x5316;&#x9636;&#x6BB5;&#xFF0C;&#x800C;BeanFactoryPostProcessor&#x5219;&#x662F;&#x5B58;&#x5728;&#x4E8E;&#x5BB9;&#x5668;&#x542F;&#x52A8;&#x9636;&#x6BB5;&#xFF0C;&#x8FD9;&#x4E24;&#x4E2A;&#x6982;&#x5FF5;&#x5C31;&#x6BD4;&#x8F83;&#x5BB9;&#x6613;&#x533A;&#x5206;&#x4E86;&#x3002;</p>
+<p>BeanPostProcessor&#x4F1A;&#x5904;&#x7406;&#x5BB9;&#x5668;&#x5185;&#x6240;&#x6709;&#x7B26;&#x5408;&#x6761;&#x4EF6;&#x7684;&#x5B9E;&#x4F8B;&#x5316;&#x540E;&#x7684;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;&#x3002;</p>
+<p>&#x901A;&#x5E38;&#x6BD4;&#x8F83;&#x5E38;&#x89C1;&#x7684;&#x4F7F;&#x7528;BeanPostProcessor&#x7684;&#x573A;&#x666F;&#xFF0C;&#x662F;&#x5904;&#x7406;&#x6807;&#x8BB0;&#x63A5;&#x53E3;&#x5B9E;&#x73B0;&#x7C7B;&#xFF0C;&#x6216;&#x8005;&#x4E3A;&#x5F53;&#x524D;&#x5BF9;&#x8C61;&#x63D0;&#x4F9B;&#x4EE3;&#x7406;&#x5B9E;&#x73B0;&#x3002;</p>
+<p>BeanPostProcessor&#x662F;&#x5BB9;&#x5668;&#x63D0;&#x4F9B;&#x7684;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;&#x5316;&#x9636;&#x6BB5;&#x7684;&#x5F3A;&#x6709;&#x529B;&#x7684;&#x6269;&#x5C55;&#x70B9;&#x3002;</p>
+<ul>
+<li><p>&#x81EA;&#x5B9A;&#x4E49;BeanPostProcessor</p>
+<ul>
+<li><p>(1) &#x6807;&#x6CE8;&#x9700;&#x8981;&#x8FDB;&#x884C;&#x89E3;&#x5BC6;&#x7684;&#x5B9E;&#x73B0;&#x7C7B;&#x3002;&#x58F0;&#x660E;&#x4E00;&#x4E2A;&#x63A5;&#x53E3;&#x3002;&#x8981;&#x6C42;&#x76F8;&#x5173;&#x5B9E;&#x73B0;&#x7C7B;&#x5B9E;&#x73B0;&#x8BE5;&#x63A5;&#x53E3;&#x3002;</p>
+</li>
+<li><p>(2) &#x5B9E;&#x73B0;&#x76F8;&#x5E94;&#x7684;BeanPostProcessor&#x5BF9;&#x7B26;&#x5408;&#x6761;&#x4EF6;&#x7684;Bean&#x5B9E;&#x4F8B;&#x8FDB;&#x884C;&#x5904;&#x7406;&#x3002;</p>
+</li>
+<li><p>(3) &#x5C06;&#x81EA;&#x5B9A;&#x4E49;&#x7684;BeanPostProcessor&#x6CE8;&#x518C;&#x5230;&#x5BB9;&#x5668;&#x3002;</p>
+<p>&#x5BF9;&#x4E8E;BeanFactory&#x7C7B;&#x578B;&#x7684;&#x5BB9;&#x5668;&#x6765;&#x8BF4;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x901A;&#x8FC7;&#x624B;&#x5DE5;&#x7F16;&#x7801;&#x7684;&#x65B9;&#x5F0F;&#x5C06;&#x76F8;&#x5E94;&#x7684;BeanPostProcessor&#x6CE8;&#x518C;&#x5230;&#x5BB9;&#x5668;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8C03;ConfigurableBeanFactory&#x7684;addBeanPostProcessor()&#x65B9;&#x6CD5;&#x3002;&#x5BF9;&#x4E8E;ApplicationContext&#x5BB9;&#x5668;&#x6765;&#x8BF4;&#xFF0C;&#x4E8B;&#x60C5;&#x5219;&#x65B9;&#x4FBF;&#x5F97;&#x591A;&#xFF0C;&#x76F4;&#x63A5;&#x5C06;&#x76F8;&#x5E94;&#x7684;BeanPostProcessor&#x5B9E;&#x73B0;&#x7C7B;&#x901A;&#x8FC7;&#x901A;&#x5E38;&#x7684;XML&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x914D;&#x7F6E;&#x4E00;&#x4E0B;&#x5373;&#x53EF;&#x3002;</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>InitializingBean&#x548C;init-method</p>
+<p>InitializingBean&#x662F;&#x5BB9;&#x5668;&#x5185;&#x90E8;&#x5E7F;&#x6CDB;&#x4F7F;&#x7528;&#x7684;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x751F;&#x547D;&#x5468;&#x671F;&#x6807;&#x8BC6;&#x63A5;&#x53E3;&#x3002;</p>
+<p>&#x4F5C;&#x7528;&#x5728;&#x4E8E;&#xFF0C;&#x5728;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;&#x5316;&#x8FC7;&#x7A0B;&#x8C03;&#x7528;&#x8FC7;&#x201C;BeanPostProcessor&#x7684;&#x524D;&#x7F6E;&#x5904;&#x7406;&#x201D;
+&#x4E4B;&#x540E;&#xFF0C;&#x4F1A;&#x63A5;&#x7740;&#x68C0;&#x6D4B;&#x5F53;&#x524D;&#x5BF9;&#x8C61;&#x662F;&#x5426;&#x5B9E;&#x73B0;&#x4E86;InitializingBean&#x63A5;&#x53E3;&#xFF0C;&#x5982;&#x679C;&#x662F;&#xFF0C;&#x5219;&#x4F1A;&#x8C03;&#x7528;&#x5176;afterPropertiesSet()&#x65B9;&#x6CD5;&#x8FDB;&#x4E00;&#x6B65;&#x8C03;&#x6574;&#x5BF9;&#x8C61;&#x5B9E;&#x4F8B;&#x7684;&#x72B6;&#x6001;&#x3002;</p>
+<p>&#x6B64;&#x63A5;&#x53E3;&#x5728;Spring&#x5BB9;&#x5668;&#x5185;&#x90E8;&#x5E7F;&#x6CDB;&#x4F7F;&#x7528;, &#x4F46;&#x662F;&#x5982;&#x679C;&#x8BA9;&#x6211;&#x4EEC;&#x7684;&#x4E1A;&#x52A1;&#x5B9E;&#x73B0;&#x8FD9;&#x4E2A;&#x63A5;&#x53E3;,&#x5219;&#x663E;&#x5F97;Spring&#x5BB9;&#x5668;&#x6BD4;&#x8F83;&#x5177;&#x6709;&#x4FB5;&#x5165;&#x6027;&#x3002;&#x6240;&#x4EE5;Spring &#x63D0;&#x4F9B;&#x4E86;&#x53E6;&#x4E00;&#x79CD;&#x65B9;&#x5F0F;&#x6307;&#x5B9A;&#x5BF9;&#x8C61;&#x521D;&#x59CB;&#x5316;&#x64CD;&#x4F5C;,&#x90A3;&#x5C31;&#x662F;&#x5728;XML&#x914D;&#x7F6E;&#x7684;&#x65F6;&#x5019;,&#x4F7F;&#x7528;<bean>&#x7684;init-mehotd&#x5C5E;&#x6027;&#x3002;</bean></p>
+<p>&#x5982;&#x679C;&#x7CFB;&#x7EDF;&#x5F00;&#x53D1;&#x8FC7;&#x7A0B;&#x4E2D;&#x89C4;&#x5B9A;&#xFF1A;&#x6240;&#x6709;&#x4E1A;&#x52A1;&#x5BF9;&#x8C61;&#x7684;&#x81EA;&#x5B9A;&#x4E49;&#x521D;
+&#x59CB;&#x5316;&#x64CD;&#x4F5C;&#x90FD;&#x5FC5;&#x987B;&#x4EE5;init()&#x547D;&#x540D;&#xFF0C;&#x4E3A;&#x4E86;&#x7701;&#x53BB;&#x6328;&#x4E2A;<bean>&#x7684;&#x8BBE;&#x7F6E;init-method&#x8FD9;&#x6837;&#x7684;&#x70E6;&#x7410;&#xFF0C;&#x6211;&#x4EEC;&#x8FD8;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x6700;&#x9876;&#x5C42;&#x7684;<beans>&#x7684;default-init-method&#x7EDF;&#x4E00;&#x6307;&#x5B9A;&#x8FD9;&#x4E00;init()</beans></bean></p>
+<p>&#x65B9;&#x6CD5;&#x540D;&#x3002;</p>
+<p>&#x4E00;&#x822C;&#xFF0C;&#x6211;&#x4EEC;&#x662F;&#x5728;&#x96C6;&#x6210;&#x7B2C;&#x4E09;&#x65B9;&#x5E93;&#xFF0C;&#x6216;&#x8005;&#x5176;&#x4ED6;&#x7279;&#x6B8A;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x624D;&#x4F1A;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x8BE5;&#x7279;&#x6027;&#x3002;</p>
+</li>
+<li><p>DisposableBean&#x4E0E;destroy-method</p>
+<p>&#x5BF9;&#x5E94;&#x7684;bean&#x5B9A;&#x4E49;&#x662F;&#x5426;&#x901A;&#x8FC7;<bean>&#x7684;destroy-method&#x5C5E;&#x6027;&#x6307;&#x5B9A;&#x4E86;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x5BF9;&#x8C61;&#x9500;&#x6BC1;&#x65B9;&#x6CD5;&#x3002;</bean></p>
+<p>&#x6700;&#x5E38;&#x89C1;&#x5230;&#x7684;&#x8BE5;&#x529F;&#x80FD;&#x7684;&#x4F7F;&#x7528;&#x573A;&#x666F;&#x5C31;&#x662F;&#x5728;Spring&#x5BB9;&#x5668;&#x4E2D;&#x6CE8;&#x518C;&#x6570;&#x636E;&#x5E93;&#x8FDE;&#x63A5;&#x6C60;&#xFF0C;&#x5728;&#x7CFB;&#x7EDF;&#x9000;&#x51FA;&#x540E;&#xFF0C;&#x8FDE;&#x63A5;&#x6C60;&#x5E94;&#x8BE5;&#x5173;&#x95ED;&#xFF0C;&#x4EE5;&#x91CA;&#x653E;&#x76F8;&#x5E94;&#x8D44;&#x6E90;&#x3002;</p>
+</li>
+</ol>
+<h4 id="45-&#x5C0F;&#x7ED3;">4.5 &#x5C0F;&#x7ED3;</h4>
+<p>Spring&#x7684;IoC&#x5BB9;&#x5668;&#x4E3B;&#x8981;&#x6709;&#x4E24;&#x79CD;&#xFF0C;&#x5373;BeanFactory&#x548C;ApplicationContext&#x3002;</p>
+</property>
+						
+					</section>
+					
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+				</div>
+			</div>
+			
+		</div>
+
+		
+		
+		
+		<a href="02_IoC容器ApplicationContext.html" class="navigation navigation-next navigation-unique" aria-label="Next page: 02 IoC陪我看看ApplicationContext">
+			<i class="fa fa-angle-right"></i>
+		</a>
+		
+		
+		
+	</div>
+	<script>
+		var gitbook = gitbook || [];
+		gitbook.push(function() {
+			gitbook.page.hasChanged({"page":{"title":"01 Spring的IOC容器之BeanFactory","level":"1.5.1.2.1","depth":4,"next":{"title":"02 IoC陪我看看ApplicationContext","level":"1.5.1.2.2","depth":4,"path":"后台/Java/04_Spring/02_IoC容器ApplicationContext.md","ref":"后台/Java/04_Spring/02_IoC容器ApplicationContext.md","articles":[]},"previous":{"title":"Spring","level":"1.5.1.2","depth":3,"ref":"","articles":[{"title":"01 Spring的IOC容器之BeanFactory","level":"1.5.1.2.1","depth":4,"path":"后台/Java/04_Spring/01_Spring的IoC容器之BeanFactory.md","ref":"后台/Java/04_Spring/01_Spring的IoC容器之BeanFactory.md","articles":[]},{"title":"02 IoC陪我看看ApplicationContext","level":"1.5.1.2.2","depth":4,"path":"后台/Java/04_Spring/02_IoC容器ApplicationContext.md","ref":"后台/Java/04_Spring/02_IoC容器ApplicationContext.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["splitter","expandable-chapters","chapter-fold","back-to-top-button","code","emphasize","prism","flexible-alerts","auto-scroll-table","lightbox","-po","hide-element","theme-fexa","github","livereload"],"root":".","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"emphasize":{},"github":{"url":"https://github.com/Clarencezero"},"livereload":{},"splitter":{},"search":{},"auto-scroll-table":{},"theme-fexa":{"search-placeholder":"输入关键字搜索","logo":"./logo.png","favicon":"./favor.png"},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"lightbox":{"jquery":true,"sameUuid":false},"back-to-top-button":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"Clarencezero","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"themeFexa":{"nav":[]}},"title":"0214","language":"zh-hans","gitbook":"*","description":"Life is Fantastic"},"file":{"path":"后台/Java/04_Spring/01_Spring的IoC容器之BeanFactory.md","mtime":"2020-01-11T14:04:05.650Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-02-15T09:13:55.626Z"},"basePath":"../../..","book":{"language":""}});
+		});
+	</script>
+</div>
+
+        
+    <script src="../../../gitbook/gitbook.js"></script>
+    <script src="../../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-flexible-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-auto-scroll-table/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-lightbox/js/lightbox.min.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-hide-element/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../../../gitbook/gitbook-plugin-theme-fexa/fexa.js"></script>
+        
+    
+
+    </body>
+</html>
+
